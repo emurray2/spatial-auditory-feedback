@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		071D47A72BC5C4920080E066 /* View+MTLTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D47A62BC5C4920080E066 /* View+MTLTexture.swift */; };
 		6058315D2BC3797700F7E99D /* SpatialAuditoryFeedbackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6058315C2BC3797700F7E99D /* SpatialAuditoryFeedbackApp.swift */; };
 		6058315F2BC3797700F7E99D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6058315E2BC3797700F7E99D /* ContentView.swift */; };
 		605831612BC3797700F7E99D /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 605831602BC3797700F7E99D /* Item.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		071D47A62BC5C4920080E066 /* View+MTLTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+MTLTexture.swift"; sourceTree = "<group>"; };
 		605831592BC3797700F7E99D /* SpatialAuditoryFeedback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpatialAuditoryFeedback.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6058315C2BC3797700F7E99D /* SpatialAuditoryFeedbackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatialAuditoryFeedbackApp.swift; sourceTree = "<group>"; };
 		6058315E2BC3797700F7E99D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				607129F92BC51C4700EB6E3D /* shader.metal */,
+				071D47A62BC5C4920080E066 /* View+MTLTexture.swift */,
 				6058315C2BC3797700F7E99D /* SpatialAuditoryFeedbackApp.swift */,
 				6058315E2BC3797700F7E99D /* ContentView.swift */,
 				605831602BC3797700F7E99D /* Item.swift */,
@@ -267,6 +270,7 @@
 			files = (
 				607129FA2BC51C4700EB6E3D /* shader.metal in Sources */,
 				6058315F2BC3797700F7E99D /* ContentView.swift in Sources */,
+				071D47A72BC5C4920080E066 /* View+MTLTexture.swift in Sources */,
 				605831612BC3797700F7E99D /* Item.swift in Sources */,
 				6058315D2BC3797700F7E99D /* SpatialAuditoryFeedbackApp.swift in Sources */,
 			);
