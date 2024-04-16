@@ -10,6 +10,9 @@
 		0705D6542BCE2172001D6C4B /* MetalRepresentable+Rotations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0705D6532BCE2172001D6C4B /* MetalRepresentable+Rotations.swift */; };
 		0705D6582BCE2260001D6C4B /* MetalCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0705D6572BCE2260001D6C4B /* MetalCoordinator.swift */; };
 		0705D65A2BCE22B9001D6C4B /* MetalEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0705D6592BCE22B9001D6C4B /* MetalEnvironment.swift */; };
+		0705D6602BCE255B001D6C4B /* MetalTextureColorZapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0705D65F2BCE255B001D6C4B /* MetalTextureColorZapView.swift */; };
+		0705D6642BCE2642001D6C4B /* MTKColorZapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0705D6632BCE2642001D6C4B /* MTKColorZapCoordinator.swift */; };
+		0705D6682BCE2797001D6C4B /* CameraCapturedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0705D6672BCE2797001D6C4B /* CameraCapturedData.swift */; };
 		071D47A72BC5C4920080E066 /* View+MTLTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D47A62BC5C4920080E066 /* View+MTLTexture.swift */; };
 		6058315D2BC3797700F7E99D /* SpatialAuditoryFeedbackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6058315C2BC3797700F7E99D /* SpatialAuditoryFeedbackApp.swift */; };
 		6058315F2BC3797700F7E99D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6058315E2BC3797700F7E99D /* ContentView.swift */; };
@@ -43,6 +46,9 @@
 		0705D6532BCE2172001D6C4B /* MetalRepresentable+Rotations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MetalRepresentable+Rotations.swift"; sourceTree = "<group>"; };
 		0705D6572BCE2260001D6C4B /* MetalCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalCoordinator.swift; sourceTree = "<group>"; };
 		0705D6592BCE22B9001D6C4B /* MetalEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalEnvironment.swift; sourceTree = "<group>"; };
+		0705D65F2BCE255B001D6C4B /* MetalTextureColorZapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalTextureColorZapView.swift; sourceTree = "<group>"; };
+		0705D6632BCE2642001D6C4B /* MTKColorZapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTKColorZapCoordinator.swift; sourceTree = "<group>"; };
+		0705D6672BCE2797001D6C4B /* CameraCapturedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCapturedData.swift; sourceTree = "<group>"; };
 		071D47A62BC5C4920080E066 /* View+MTLTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+MTLTexture.swift"; sourceTree = "<group>"; };
 		605831592BC3797700F7E99D /* SpatialAuditoryFeedback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpatialAuditoryFeedback.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6058315C2BC3797700F7E99D /* SpatialAuditoryFeedbackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatialAuditoryFeedbackApp.swift; sourceTree = "<group>"; };
@@ -112,6 +118,9 @@
 				0705D6592BCE22B9001D6C4B /* MetalEnvironment.swift */,
 				071D47A62BC5C4920080E066 /* View+MTLTexture.swift */,
 				0705D6532BCE2172001D6C4B /* MetalRepresentable+Rotations.swift */,
+				0705D65F2BCE255B001D6C4B /* MetalTextureColorZapView.swift */,
+				0705D6632BCE2642001D6C4B /* MTKColorZapCoordinator.swift */,
+				0705D6672BCE2797001D6C4B /* CameraCapturedData.swift */,
 				6058315C2BC3797700F7E99D /* SpatialAuditoryFeedbackApp.swift */,
 				6058315E2BC3797700F7E99D /* ContentView.swift */,
 				605831602BC3797700F7E99D /* Item.swift */,
@@ -278,7 +287,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				607129FA2BC51C4700EB6E3D /* shader.metal in Sources */,
+				0705D6642BCE2642001D6C4B /* MTKColorZapCoordinator.swift in Sources */,
 				0705D65A2BCE22B9001D6C4B /* MetalEnvironment.swift in Sources */,
+				0705D6602BCE255B001D6C4B /* MetalTextureColorZapView.swift in Sources */,
+				0705D6682BCE2797001D6C4B /* CameraCapturedData.swift in Sources */,
 				6058315F2BC3797700F7E99D /* ContentView.swift in Sources */,
 				0705D6542BCE2172001D6C4B /* MetalRepresentable+Rotations.swift in Sources */,
 				071D47A72BC5C4920080E066 /* View+MTLTexture.swift in Sources */,
