@@ -28,7 +28,10 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
+    @StateObject private var camera = CameraManager()
     @Environment(\.modelContext) private var modelContext
+    @State private var maxDepth = Float(5.0)
+    @State private var minDepth = Float(0.0)
     @Query private var items: [Item]
 
     var body: some View {
@@ -59,7 +62,17 @@ struct ContentView: View {
                 }
             }
         } detail: {
-            Text("Select an item")
+            VStack {
+                SliderDepthBoundaryView(val: $maxDepth, label: "Max Depth", minVal: 0.0, maxVal: 15.0)
+                SliderDepthBoundaryView(val: $minDepth, label: "Min Depth", minVal: 0.0, maxVal: 15.0)
+                MetalTextureColorZapView(
+                    rotationAngle: rotationAngle,
+                    maxDepth: $maxDepth,
+                    minDepth: $minDepth,
+                    capturedData: camera.capturedData
+                )
+                .aspectRatio(calcAspect(orientation: viewOrientation, texture: camera.capturedData.depth), contentMode: .fit)
+            }
         }
     }
 
