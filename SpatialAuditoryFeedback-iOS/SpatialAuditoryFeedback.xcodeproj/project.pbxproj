@@ -14,6 +14,9 @@
 		0705D6642BCE2642001D6C4B /* MTKColorZapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0705D6632BCE2642001D6C4B /* MTKColorZapCoordinator.swift */; };
 		0705D6682BCE2797001D6C4B /* CameraCapturedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0705D6672BCE2797001D6C4B /* CameraCapturedData.swift */; };
 		0705D66C2BCEE932001D6C4B /* SliderDepthBoundaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0705D66B2BCEE932001D6C4B /* SliderDepthBoundaryView.swift */; };
+		0705D6702BCEEF01001D6C4B /* CameraManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0705D66F2BCEEF01001D6C4B /* CameraManager.swift */; };
+		0705D6742BCEEFD5001D6C4B /* CameraProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0705D6732BCEEFD5001D6C4B /* CameraProvider.swift */; };
+		0705D6782BCEF59C001D6C4B /* CVPixelBuffer+Textures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0705D6772BCEF59C001D6C4B /* CVPixelBuffer+Textures.swift */; };
 		071D47A72BC5C4920080E066 /* View+MTLTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071D47A62BC5C4920080E066 /* View+MTLTexture.swift */; };
 		6058315D2BC3797700F7E99D /* SpatialAuditoryFeedbackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6058315C2BC3797700F7E99D /* SpatialAuditoryFeedbackApp.swift */; };
 		6058315F2BC3797700F7E99D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6058315E2BC3797700F7E99D /* ContentView.swift */; };
@@ -51,6 +54,9 @@
 		0705D6632BCE2642001D6C4B /* MTKColorZapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTKColorZapCoordinator.swift; sourceTree = "<group>"; };
 		0705D6672BCE2797001D6C4B /* CameraCapturedData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraCapturedData.swift; sourceTree = "<group>"; };
 		0705D66B2BCEE932001D6C4B /* SliderDepthBoundaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderDepthBoundaryView.swift; sourceTree = "<group>"; };
+		0705D66F2BCEEF01001D6C4B /* CameraManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraManager.swift; sourceTree = "<group>"; };
+		0705D6732BCEEFD5001D6C4B /* CameraProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraProvider.swift; sourceTree = "<group>"; };
+		0705D6772BCEF59C001D6C4B /* CVPixelBuffer+Textures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+Textures.swift"; sourceTree = "<group>"; };
 		071D47A62BC5C4920080E066 /* View+MTLTexture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+MTLTexture.swift"; sourceTree = "<group>"; };
 		605831592BC3797700F7E99D /* SpatialAuditoryFeedback.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpatialAuditoryFeedback.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6058315C2BC3797700F7E99D /* SpatialAuditoryFeedbackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatialAuditoryFeedbackApp.swift; sourceTree = "<group>"; };
@@ -123,6 +129,9 @@
 				0705D65F2BCE255B001D6C4B /* MetalTextureColorZapView.swift */,
 				0705D6632BCE2642001D6C4B /* MTKColorZapCoordinator.swift */,
 				0705D6672BCE2797001D6C4B /* CameraCapturedData.swift */,
+				0705D66F2BCEEF01001D6C4B /* CameraManager.swift */,
+				0705D6732BCEEFD5001D6C4B /* CameraProvider.swift */,
+				0705D6772BCEF59C001D6C4B /* CVPixelBuffer+Textures.swift */,
 				0705D66B2BCEE932001D6C4B /* SliderDepthBoundaryView.swift */,
 				6058315C2BC3797700F7E99D /* SpatialAuditoryFeedbackApp.swift */,
 				6058315E2BC3797700F7E99D /* ContentView.swift */,
@@ -290,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607129FA2BC51C4700EB6E3D /* shader.metal in Sources */,
+				0705D6702BCEEF01001D6C4B /* CameraManager.swift in Sources */,
 				0705D6642BCE2642001D6C4B /* MTKColorZapCoordinator.swift in Sources */,
 				0705D65A2BCE22B9001D6C4B /* MetalEnvironment.swift in Sources */,
 				0705D66C2BCEE932001D6C4B /* SliderDepthBoundaryView.swift in Sources */,
@@ -297,9 +307,11 @@
 				0705D6682BCE2797001D6C4B /* CameraCapturedData.swift in Sources */,
 				6058315F2BC3797700F7E99D /* ContentView.swift in Sources */,
 				0705D6542BCE2172001D6C4B /* MetalRepresentable+Rotations.swift in Sources */,
+				0705D6742BCEEFD5001D6C4B /* CameraProvider.swift in Sources */,
 				071D47A72BC5C4920080E066 /* View+MTLTexture.swift in Sources */,
 				605831612BC3797700F7E99D /* Item.swift in Sources */,
 				0705D6582BCE2260001D6C4B /* MetalCoordinator.swift in Sources */,
+				0705D6782BCEF59C001D6C4B /* CVPixelBuffer+Textures.swift in Sources */,
 				6058315D2BC3797700F7E99D /* SpatialAuditoryFeedbackApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
