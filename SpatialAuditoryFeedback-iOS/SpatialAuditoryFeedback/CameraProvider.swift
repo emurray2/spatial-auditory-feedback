@@ -25,9 +25,11 @@ class CameraProvider: NSObject, AVCaptureDataOutputSynchronizerDelegate {
                                       cameraIntrinsics: cameraCalibrationData.intrinsicMatrix,
                                       cameraReferenceDimensions: cameraCalibrationData.intrinsicMatrixReferenceDimensions)
         delegate?.onNewData(capturedData: data)
+        poseDetector.mapPoseToPanning(cmSampleBuffer: syncedVideoData.sampleBuffer, depthData: syncedDepthData.depthData)
     }
 
     private let videoQueue = DispatchQueue(label: "student.evanmurray.SpatialAuditoryFeedback.VideoQueue", qos: .userInteractive)
+    private let poseDetector = PoseDetector()
     private var textureCache: CVMetalTextureCache!
     let captureSession = AVCaptureSession()
     let preferredWidthResolution = 1920

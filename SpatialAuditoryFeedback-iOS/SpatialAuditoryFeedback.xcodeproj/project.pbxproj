@@ -27,6 +27,9 @@
 		6058317B2BC3797900F7E99D /* SpatialAuditoryFeedbackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6058317A2BC3797900F7E99D /* SpatialAuditoryFeedbackUITests.swift */; };
 		6058317D2BC3797900F7E99D /* SpatialAuditoryFeedbackUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6058317C2BC3797900F7E99D /* SpatialAuditoryFeedbackUITestsLaunchTests.swift */; };
 		607129FA2BC51C4700EB6E3D /* shader.metal in Sources */ = {isa = PBXBuildFile; fileRef = 607129F92BC51C4700EB6E3D /* shader.metal */; };
+		607B16982BD14067002B3AC6 /* OSCKit in Frameworks */ = {isa = PBXBuildFile; productRef = 607B16972BD14067002B3AC6 /* OSCKit */; };
+		607B169A2BD14067002B3AC6 /* OSCKitCore in Frameworks */ = {isa = PBXBuildFile; productRef = 607B16992BD14067002B3AC6 /* OSCKitCore */; };
+		60FF4C4B2BD15B7100D75E79 /* PoseDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60FF4C4A2BD15B7100D75E79 /* PoseDetector.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +74,7 @@
 		6058317A2BC3797900F7E99D /* SpatialAuditoryFeedbackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatialAuditoryFeedbackUITests.swift; sourceTree = "<group>"; };
 		6058317C2BC3797900F7E99D /* SpatialAuditoryFeedbackUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpatialAuditoryFeedbackUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		607129F92BC51C4700EB6E3D /* shader.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = shader.metal; sourceTree = "<group>"; };
+		60FF4C4A2BD15B7100D75E79 /* PoseDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseDetector.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				607B169A2BD14067002B3AC6 /* OSCKitCore in Frameworks */,
+				607B16982BD14067002B3AC6 /* OSCKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +137,7 @@
 				0705D6672BCE2797001D6C4B /* CameraCapturedData.swift */,
 				0705D66F2BCEEF01001D6C4B /* CameraManager.swift */,
 				0705D6732BCEEFD5001D6C4B /* CameraProvider.swift */,
+				60FF4C4A2BD15B7100D75E79 /* PoseDetector.swift */,
 				0705D6772BCEF59C001D6C4B /* CVPixelBuffer+Textures.swift */,
 				0705D66B2BCEE932001D6C4B /* SliderDepthBoundaryView.swift */,
 				6058315C2BC3797700F7E99D /* SpatialAuditoryFeedbackApp.swift */,
@@ -184,6 +191,10 @@
 			dependencies = (
 			);
 			name = SpatialAuditoryFeedback;
+			packageProductDependencies = (
+				607B16972BD14067002B3AC6 /* OSCKit */,
+				607B16992BD14067002B3AC6 /* OSCKitCore */,
+			);
 			productName = SpatialAuditoryFeedback;
 			productReference = 605831592BC3797700F7E99D /* SpatialAuditoryFeedback.app */;
 			productType = "com.apple.product-type.application";
@@ -256,6 +267,9 @@
 				Base,
 			);
 			mainGroup = 605831502BC3797700F7E99D;
+			packageReferences = (
+				607B16962BD13FA6002B3AC6 /* XCRemoteSwiftPackageReference "OSCKit" */,
+			);
 			productRefGroup = 6058315A2BC3797700F7E99D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -312,6 +326,7 @@
 				605831612BC3797700F7E99D /* Item.swift in Sources */,
 				0705D6582BCE2260001D6C4B /* MetalCoordinator.swift in Sources */,
 				0705D6782BCEF59C001D6C4B /* CVPixelBuffer+Textures.swift in Sources */,
+				60FF4C4B2BD15B7100D75E79 /* PoseDetector.swift in Sources */,
 				6058315D2BC3797700F7E99D /* SpatialAuditoryFeedbackApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -673,6 +688,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		607B16962BD13FA6002B3AC6 /* XCRemoteSwiftPackageReference "OSCKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/orchetect/OSCKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		607B16972BD14067002B3AC6 /* OSCKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 607B16962BD13FA6002B3AC6 /* XCRemoteSwiftPackageReference "OSCKit" */;
+			productName = OSCKit;
+		};
+		607B16992BD14067002B3AC6 /* OSCKitCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 607B16962BD13FA6002B3AC6 /* XCRemoteSwiftPackageReference "OSCKit" */;
+			productName = OSCKitCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 605831512BC3797700F7E99D /* Project object */;
 }
