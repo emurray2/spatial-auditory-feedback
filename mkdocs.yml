@@ -1,0 +1,7 @@
+site_name: Spatial Auditory Feedback
+nav:
+    - Home: index.md
+    - Kinect: kinect.md
+    - Processing: processing.md
+    - iOS: ios.md
+theme: readthedocs
