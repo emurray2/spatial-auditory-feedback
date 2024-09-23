@@ -3,4 +3,4 @@
 	url = https://github.com/OpenKinect/libfreenect2.git
 [submodule "Kinect/openpose"]
 	path = Kinect/openpose
-	url = https://github.com/CMU-Perceptual-Computing-Lab/openpose.git
+	url = https://github.com/AlecDusheck/openpose.git
