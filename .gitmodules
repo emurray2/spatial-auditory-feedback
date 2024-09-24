@@ -4,3 +4,9 @@
 [submodule "Kinect/openpose"]
 	path = Kinect/openpose
 	url = https://github.com/AlecDusheck/openpose.git
+[submodule "Kinect/iai_kinect2"]
+	path = Kinect/iai_kinect2
+	url = https://github.com/code-iai/iai_kinect2.git
+[submodule "Kinect/ros_openpose"]
+	path = Kinect/ros_openpose
+	url = https://github.com/ravijo/ros_openpose.git
