@@ -87,3 +87,25 @@ Now any of the OpenNI2, libfreenect2, and NiTE programs should be able to run wi
 - The libfreenect2 program is in `/path/to/libfreenect2/build/bin/`. It can be run via `./path/to/libfreenect2/build/bin/Protonect`.
 - The NiTE programs are in `/path/to/NiTE-Linux-x64-2.2/Samples/Bin`. The one which shows the tracked skeleton is called `UserViewer` and can be run via `./path/to/NiTE-Linux-x64-2.2/Samples/Bin/UserViewer`. Note this program was intended for the original Kinect v1 sensor, so it doesn't perform optimally with the Kinect v2 sensors due to the down-scaled resolution. Further investigation on an alternative skeleton tracking method is in progress.
 
+## OpenPose
+The real question is what new solutions are out there for skeleton tracking using the Kinectv2 sensor? The following tutorial will guide you through installing a Kinect v2 compatible solution for Carnegie Mellon University's library for skeleton tracking called [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose).
+
+Many of the packages used for the Kinect are not supported on later distro versions anymore, so it would be nice to setup some sort of container which can hold and run our work. This is the perfect job for Docker, a package which allows the containerization of a Ubuntu image -- or pretty much any Linux distro for that matter. Docker has a nice wrapper which makes the job even easier called [Distrobox](https://wiki.archlinux.org/title/Distrobox). It can be installed with aptitude via the following command:
+
+```shell
+sudo apt install distrobox
+```
+
+A container can be created with a name and an image in a registry, such as the docker.io registry. Example url: docker.io/barebuild/ubuntu:14.04. In this installation, we will use the official Ubuntu 20.04 distro which is the latest compatible distro for this installation. Then we can give the container a name we will remember for our use case, such as kinectubuntu.
+
+```shell
+distrobox create --name kinectubuntu --image ubuntu:20.04
+```
+
+Then you can enter the container you created using:
+
+```shell
+distrobox enter kinectubuntu
+```
+
+
