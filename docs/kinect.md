@@ -88,7 +88,12 @@ Now any of the OpenNI2, libfreenect2, and NiTE programs should be able to run wi
 - The NiTE programs are in `/path/to/NiTE-Linux-x64-2.2/Samples/Bin`. The one which shows the tracked skeleton is called `UserViewer` and can be run via `./path/to/NiTE-Linux-x64-2.2/Samples/Bin/UserViewer`. Note this program was intended for the original Kinect v1 sensor, so it doesn't perform optimally with the Kinect v2 sensors due to the down-scaled resolution. Further investigation on an alternative skeleton tracking method is in progress.
 
 ## OpenPose
+
+![OpenPose](openpose.png)
+
 The real question is what new solutions are out there for skeleton tracking using the Kinectv2 sensor? The following tutorial will guide you through installing a Kinect v2 compatible solution for Carnegie Mellon University's library for skeleton tracking called [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose).
+
+### Distrobox Installation
 
 Many of the packages used for the Kinect are not supported on later distro versions anymore, so it would be nice to setup some sort of container which can hold and run our work. This is the perfect job for Docker, a package which allows the containerization of a Ubuntu image -- or pretty much any Linux distro for that matter. Docker has a nice wrapper which makes the job even easier called [Distrobox](https://wiki.archlinux.org/title/Distrobox). It can be installed with aptitude via the following command:
 
@@ -108,4 +113,361 @@ Then you can enter the container you created using:
 distrobox enter kinectubuntu
 ```
 
+After this command, you should see something like this:
 
+```shell
+evan@evanmurray-MBP:~$ distrobox enter kinectubuntu
+Starting container...                            [ OK ]
+Installing basic packages...                     [ OK ]
+Setting up devpts mounts...                      [ OK ]
+Setting up read-only mounts...                   [ OK ]
+Setting up read-write mounts...                  [ OK ]
+Setting up host's sockets integration...         [ OK ]
+Integrating host's themes, icons, fonts...       [ OK ]
+Setting up package manager exceptions...         [ OK ]
+Setting up package manager hooks...              [ OK ]
+Setting up dpkg exceptions...                    [ OK ]
+Setting up apt hooks...                          [ OK ]
+Setting up distrobox profile...                  [ OK ]
+Setting up sudo...                               [ OK ]
+Setting up user groups...                        [ OK ]
+Setting up kerberos integration...               [ OK ]
+Setting up user's group list...                  [ OK ]
+Setting up user home...                          [ OK ]
+Ensuring user's access...                        [ OK ]
+
+Container Setup Complete!
+evan@kinectubuntu:~$
+```
+
+Notice how now the hostname is the name of the container. You should now install this package, as it will be needed later. You can also use it to verify the version of Ubuntu.
+
+```shell
+evan@kinectubuntu:~$ sudo apt install lsb-release
+evan@kinectubuntu:~$ lsb_release -a
+No LSB modules are available.
+Distributor ID: Ubuntu
+Description:    Ubuntu 20.04.6 LTS
+Release:        20.04
+Codename:       focal
+evan@kinectubuntu:~$
+```
+
+You'll also want to install `nano` and `git`. Nano can be used as a text editor, and git can be used for cloning some required repositories for this installation.
+
+```shell
+sudo apt install nano git
+```
+
+### OpenPose installation
+
+First, you'll want to install the OpenCV development libraries and create a symlink for opencv2 to find opencv4.
+
+```shell
+sudo apt install libopencv-dev
+sudo ln -s /usr/include/opencv4/opencv2 /usr/include/opencv2
+```
+
+You'll also want to install the CMake GUI built with Qt to build the OpenPose project.
+
+```shell
+sudo apt install cmake-qt-gui
+```
+
+Then, since the Caffe machine learning models with the default version of OpenPose have issues, you can clone this fork to install them correctly. We'll also want to initialize the submodules.
+
+```shell
+git clone https://github.com/AlecDusheck/openpose.git
+cd openpose
+git submodule update --init --recursive --remote
+```
+
+Now that we've cloned the repo, you can run this script to install the OpenPose dependencies:
+
+```shell
+sudo bash ./scripts/ubuntu/install_deps.sh
+```
+
+Then create the build directory, go to it, and run configure to download the Caffe models.
+
+```shell
+mkdir build
+cd build
+cmake-gui ..
+```
+
+A window should pop up which looks like this. Make sure the source folder is set to the root of OpenPose and the build folder is set to the build folder you just created.
+
+![CMakeWindow](CmakeGui1.png)
+
+Now click the Configure button and make sure the generator is set to "Unix Makefiles".
+
+![CMakeSetup](CMakeSetup.png)
+
+Don't worry, once you run this step--configure should fail for the first time.
+
+![CMakeError](CMakeError.png)
+
+This is because we haven't specified how to install CUDA yet. This will be covered in a later tutorial. For now, you can set the GPU_MODE flag to CPU_ONLY as below:
+
+![CPUOnly](CPUOnly.png)
+
+Now run configure again to download the Caffe models. You should see "Configuring done" at the bottom of the console when it completes.
+
+Now navigate to the root of your OpenPose folder and go to the models folder. Copy the three files located there to a convenient place, as they will be needed later:
+
+```
+/home/evan/openpose/models/pose/body_25/pose_iter_584000.caffemodel
+/home/evan/openpose/models/hand/pose_iter_102000.caffemodel
+/home/evan/openpose/models/face/pose_iter_116000.caffemodel
+```
+
+Now, delete your OpenPose folder. This may seem counter-intuitive, but you'll see why. Clone the OpenPose from the official CMU repo:
+
+```shell
+git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose.git
+```
+
+Now you should checkout version 1.7.0, as this is the latest supported version by another tool we will use.
+
+```shell
+cd openpose
+git checkout tags/v1.7.0
+```
+
+Now, follow the same steps we followed for the previous OpenPose repo. On the second CMake configure, you will get another error.
+
+```
+CMake Error at cmake/Utils.cmake:8 (file):
+  file DOWNLOAD HASH mismatch
+
+    for file: [/home/evan/openpose/models/pose/body_25/pose_iter_584000.caffemodel]
+      expected hash: [78287b57cf85fa89c03f1393d368e5b7]
+        actual hash: [d41d8cd98f00b204e9800998ecf8427e]
+             status: [7;"Couldn't connect to server"]
+
+Call Stack (most recent call first):
+  CMakeLists.txt:994 (download_model)
+```
+
+This is why we used the other repo to download the models. Now locate those models, and copy each one to the correct directory to replace the existing model file there (which should be 0B in size since it failed to download). Once that's done, run configure again, and it should successfully complete this time. Now click the "Generate" button to generate the build files.
+
+Now run this make command to make OpenPose:
+
+```shell
+make -j`nproc`
+```
+
+Then run this to install the library on the system:
+
+```shell
+sudo make install
+```
+
+### ROS Installation
+First, add this source to your sources file to download the ROS packages:
+
+```shell
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+```
+
+Then add it to your keys:
+
+```shell
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+```
+
+Now update your package index:
+
+```shell
+sudo apt update
+```
+
+Now install ROS noetic:
+
+```shell
+sudo apt install ros-noetic-desktop-full
+```
+
+Now activate the ROS environment:
+
+```
+source /opt/ros/noetic/setup.bash
+```
+
+Install and initialize ROS dependencies
+
+```shell
+sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+sudo apt install python3-rosdep
+sudo rosdep init
+rosdep update
+```
+
+Now create and initialize catkin workspace via the following commands:
+
+```shell
+mkdir -p ~/catkin_ws/src
+cd ~/catkin_ws/
+catkin_make
+source devel/setup.bash
+```
+
+Copy the contents of this script and paste it in a file called `fix_cpp.py` to fix the CMake files later: [https://gist.githubusercontent.com/Meltwin/1ee35296d2bb86fee19d639580e3c91f/raw/13b8d626733981cdf58244708e5cba1ee5d87e1c/change_cpp.py](https://gist.githubusercontent.com/Meltwin/1ee35296d2bb86fee19d639580e3c91f/raw/13b8d626733981cdf58244708e5cba1ee5d87e1c/change_cpp.py)
+
+```shell
+sudo nano fix_cpp.py
+```
+
+### Kinect Bridge Installation
+If you've followed the steps [above](#installation), you should already have libfreenect2 installed. However, you may want to re-install it in the container since some of the dependencies won't be installed. You can do so by removing the libfreenect2 and freenect2 folders and re-following the installation steps inside the container. You can skip step 9 since the container looks to the host for usb devices. You can also skip step 10 since it's already been done, and again the container relies on the host system for these libraries.
+
+Go to the `src` directory and clone the kinect bridge repo there:
+
+```shell
+cd src
+git clone https://github.com/code-iai/iai_kinect2.git
+```
+
+Go to the repo directory and install all the ROS dependencies.
+
+```shell
+cd iai_kinect2
+rosdep install -r --from-paths .
+```
+
+Temporarily move the CMakeLists.txt file at the root of `src` directory somewhere else, and run the `fix_cpp.py` script at the root of the workspace.
+
+```shell
+cd ~/catkin_ws
+python3 fix_cpp.py
+```
+
+You should see something like this:
+
+```shell
+evan@kinectubuntu:~/catkin_ws$ python3 fix_cpp.py
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                                     CMakeLists to C++17 Utils                                      ┃
+┃                                           Meltwin - 2023                                           ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+▷ Found ./src/iai_kinect2/iai_kinect2/CMakeLists.txt Nothing to change
+▷ Found ./src/iai_kinect2/kinect2_calibration/CMakeLists.txt Fixed !
+▷ Found ./src/iai_kinect2/kinect2_bridge/CMakeLists.txt Fixed !
+▷ Found ./src/iai_kinect2/kinect2_viewer/CMakeLists.txt Fixed !
+▷ Found ./src/iai_kinect2/kinect2_registration/CMakeLists.txt Fixed !
+evan@kinectubuntu:~/catkin_ws$
+```
+
+Next, move the CMakeLists.txt back and build the package via the following command:
+
+```shell
+catkin_make -DCMAKE_BUILD_TYPE="Release"
+```
+
+You'll get a bunch of errors, but don't worry. We will fix them now. Do the following:
+
+* Open up the file(s) where the error occurs
+* Replace all occurences of `CV_IMWRITE_PNG_COMPRESSION` with `cv::IMWRITE_PNG_COMPRESSION`
+* Replace all occurences of `CV_IMWRITE_JPEG_QUALITY` with `cv::IMWRITE_JPEG_QUALITY`
+* Replace all occurences of `CV_IMWRITE_PNG_STRATEGY` with `cv::IMWRITE_PNG_STRATEGY`
+* Replace all occurences of `CV_IMWRITE_PNG_STRATEGY_RLE` with `cv::IMWRITE_PNG_STRATEGY_RLE`
+* Replace all occurences of `CV_BGRA2BGR` with `cv::COLOR_BGRA2BGR`
+* Replace all occurences of `CV_RGBA2BGR` with `cv::COLOR_RGBA2BGR`
+* Replace all occurences of `CV_BGR2GRAY` with `cv::COLOR_BGR2GRAY`
+* Replace all occurences of `CV_AA` with `cv::LINE_AA`
+
+Now save all the files, run the command again, and it should build successfully!
+
+### ROS OpenPose Installation
+Go back to the `src` folder of the catkin workspace and clone another repo.
+
+```shell
+cd src
+git clone https://github.com/ravijo/ros_openpose.git
+```
+
+Go to the repo directory and install all the ROS dependencies.
+
+```shell
+cd ros_openpose
+rosdep install -r --from-paths .
+```
+
+Temporarily move the CMakeLists.txt file at the root of `src` directory somewhere else, and run the `fix_cpp.py` script at the root of the workspace.
+
+```shell
+cd ~/catkin_ws
+python3 fix_cpp.py
+```
+
+You should see something like this:
+
+```shell
+evan@kinectubuntu:~/catkin_ws$ python3 fix_cpp.py
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃                                     CMakeLists to C++17 Utils                                      ┃
+┃                                           Meltwin - 2023                                           ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+▷ Found ./src/iai_kinect2/iai_kinect2/CMakeLists.txt Nothing to change
+▷ Found ./src/iai_kinect2/kinect2_calibration/CMakeLists.txt Nothing to change
+▷ Found ./src/iai_kinect2/kinect2_bridge/CMakeLists.txt Nothing to change
+▷ Found ./src/iai_kinect2/kinect2_viewer/CMakeLists.txt Nothing to change
+▷ Found ./src/iai_kinect2/kinect2_registration/CMakeLists.txt Nothing to change
+▷ Found ./src/ros_openpose/CMakeLists.txt Fixed !
+evan@kinectubuntu:~/catkin_ws$
+```
+
+Now move the CMakeLists.txt file back and run the make command at the root of the workspace to build the package.
+
+```shell
+catkin_make
+```
+
+Next, go to the scripts folder of the ros openpose and make all the files executable.
+
+```shell
+roscd ros_openpose/scripts
+chmod +x *.py
+```
+
+Now, install this python package to allow the visualizer to correctly work.
+
+```shell
+sudo apt install python-is-python3
+```
+
+Make sure the kinects are connected to the computer and run this command to launch the visualizer:
+
+```shell
+roslaunch ros_openpose run.launch camera:=kinect
+```
+
+### Uninstalling OpenPose
+Since we installed everything in the Distrobox container, this is fairly simple.
+
+Step 1 is to remove all of the folders you git cloned for the project.
+
+```shell
+cd ~
+sudo rm -r catkin_ws
+sudo rm -r openpose
+sudo rm -r libfreenect2
+sudo rm -r freenect2
+```
+
+Then, exit the container via the `logout` command. It should look something like this.
+
+```shell
+evan@kinectubuntu:~$ logout
+evan@evanmurray-MBP:~$
+```
+
+Notice how now the host has changed back to our actual hostname. You can now stop the container and remove it.
+
+```shell
+distrobox stop kinectubuntu
+distrobox rm kinectubuntu
+```
