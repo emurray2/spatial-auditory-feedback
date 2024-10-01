@@ -588,4 +588,6 @@ You'll also want to re-build all of the ROS packages we installed above.
 ```shell
 sudo apt-get --purge remove "*cuda*" "*cublas*" "*cufft*" "*cufile*" "*curand*"  "*cusolver*" "*cusparse*" "*gds-tools*" "*npp*" "*nvjpeg*" "nsight*" "*nvvm*"
 sudo apt-get remove --purge "*nvidia-driver*" "libxnvctrl*"
+sudo apt autoremove --purge
+sudo apt autoclean
 ```
