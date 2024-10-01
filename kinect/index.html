@@ -502,6 +502,8 @@ git checkout tags/v11.6
 <h3 id="uninstalling-gpu-drivers">Uninstalling GPU Drivers</h3>
 <pre><code class="language-shell">sudo apt-get --purge remove &quot;*cuda*&quot; &quot;*cublas*&quot; &quot;*cufft*&quot; &quot;*cufile*&quot; &quot;*curand*&quot;  &quot;*cusolver*&quot; &quot;*cusparse*&quot; &quot;*gds-tools*&quot; &quot;*npp*&quot; &quot;*nvjpeg*&quot; &quot;nsight*&quot; &quot;*nvvm*&quot;
 sudo apt-get remove --purge &quot;*nvidia-driver*&quot; &quot;libxnvctrl*&quot;
+sudo apt autoremove --purge
+sudo apt autoclean
 </code></pre>
               
             </div>
