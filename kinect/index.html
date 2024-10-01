@@ -504,6 +504,7 @@ git checkout tags/v11.6
 sudo apt-get remove --purge &quot;*nvidia-driver*&quot; &quot;libxnvctrl*&quot;
 sudo apt autoremove --purge
 sudo apt autoclean
+sudo apt-get purge $(dpkg -l | awk '$2~/nvidia/ {print $2}')
 </code></pre>
               
             </div>
