@@ -590,4 +590,5 @@ sudo apt-get --purge remove "*cuda*" "*cublas*" "*cufft*" "*cufile*" "*curand*" 
 sudo apt-get remove --purge "*nvidia-driver*" "libxnvctrl*"
 sudo apt autoremove --purge
 sudo apt autoclean
+sudo apt-get purge $(dpkg -l | awk '$2~/nvidia/ {print $2}')
 ```
