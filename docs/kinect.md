@@ -471,3 +471,121 @@ Notice how now the host has changed back to our actual hostname. You can now sto
 distrobox stop kinectubuntu
 distrobox rm kinectubuntu
 ```
+
+### Installing with GPU
+If you try to run OpenPose with the CPU only, you may notice it's very slow. One way the computation can be sped up is by using a GPU. The animation below was achieved realtime using an Nvidia GeForce GTX 1080 graphics card.
+
+![GPUOpenPose](GPUOpenPose.gif)
+
+To do this, first follow your GPU manufacturer's instructions on installing the GPU drivers. Make sure to install these outside of your distrobox on your regular system. An Nvidia GPU is recommended since Ubuntu makes it easy to install the drivers, and Nvidia devices support [CUDA](https://developer.nvidia.com/cuda-toolkit) by default (which we will need). Run the following command to automatically install the best GPU drivers for your system:
+
+```shell
+sudo ubuntu-drivers autoinstall
+```
+
+Once the drivers are installed, double check your graphics card is showing up through its drivers. There are a couple ways to do this with an Nvidia card:
+
+```shell
+lab@terra:~$ nvidia-smi
+Tue Oct  1 01:09:13 2024
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 550.107.02             Driver Version: 550.107.02     CUDA Version: 12.4     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce GTX 1080        Off |   00000000:01:00.0 Off |                  N/A |
+| 27%   31C    P8              6W /  180W |       7MiB /   8192MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI        PID   Type   Process name                              GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A      2541      G   /usr/lib/xorg/Xorg                              4MiB |
++-----------------------------------------------------------------------------------------+
+lab@terra:~$
+```
+
+And:
+
+```shell
+lab@terra:~$ cat /proc/driver/nvidia/version
+NVRM version: NVIDIA UNIX x86_64 Kernel Module  550.107.02  Wed Jul 24 23:53:00 UTC 2024
+GCC version:
+lab@terra:~$
+```
+
+You might need to reboot your system after installing the drivers for these changes to take effect.
+
+Then, let's create a copy of the distrobox we setup earlier. However, this time we will pass the `--nvidia` flag to enable the environment to use the GPU drivers which we just installed on our host (regular) system.
+
+```shell
+distrobox create --name kinectubuntugpu --clone kinectubuntu --nvidia
+```
+
+Now, if you run `nvidia-smi` in the environment as well, you should see the same output as on your host.
+
+Next, download the recommended [CUDA 11.7](https://developer.nvidia.com/cuda-11-7-1-download-archive) toolkit and follow the instructions listed on the website to install.
+
+When you run the CUDA installer, make sure to uncheck installing the drivers (as we already did that). The installer may warn you that the drivers were not installed, and it will also tell you to add some paths to your environment variables so CUDA can be recognized by the terminal. To add a path to an already existing path variable, you can use this chain-like syntax:
+
+```shell
+export PATH_I_WANT_TO_ADD_TO=$PATH_I_WANT_TO_ADD_TO:/path/i/want/to/add
+```
+
+This effectively will add `/path/i/want/to/add` to the list of paths contained in `$PATH_I_WANT_TO_ADD`.
+
+Whenever you restart your environment or terminal, you may need to run these commands again. If you don't want to do that, look into [adding them to your bashrc](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux-unix).
+
+Next, you should install cuDNN which is a neural net extension to CUDA: [https://developer.nvidia.com/cudnn](https://developer.nvidia.com/cudnn). The install process is pretty similar to that of the CUDA install. Follow the instructions on the Nvidia website.
+
+Now that both CUDA and cuDNN are installed, go back to your OpenPose build folder and run the `sudo bash ./scripts/ubuntu/install_deps.sh` command again. Additionally, open the CMake GUI again. This time before you configure, you should set `GPU_MODE` to `CUDA`.
+
+![GPUMODECUDA](GPUMODECUDA.png)
+
+Then, go through the whole build and install process as we did above.
+
+Now, we're going to build libfreenect2 again but with GPU support. Before we do this, you'll want to clone the CUDA samples repo in the home directory of your environment (you'll see why)
+
+```shell
+git clone https://github.com/NVIDIA/cuda-samples.git
+cd cuda-samples
+git checkout tags/v11.6
+```
+
+The last command will checkout the CUDA version below ours (11.7). You want to try and get as close as possible to the version number without going above the version of CUDA you have installed.
+
+Now, copy this folder to your CUDA folder which should be located in `/usr/local`
+
+```shell
+sudo cp -r cuda-samples /usr/local/cuda-11.7
+```
+
+Now go to your root libfreenect2:
+
+```shell
+cd ~/libfreenect2
+```
+
+Open the CMakeLists.txt file with your favorite text editor and change the line `"${CUDA_TOOLKIT_ROOT_DIR}/samples/common/inc"` to `"${CUDA_TOOLKIT_ROOT_DIR}/cuda-samples/Common"`. This will allow CMake to find the include files for these which are very important. Ever since CUDA 11.6, the samples are not shipped with the toolkit which is why we need to install them separately. Otherwise you will get some error about missing a math_helper.h file and a bunch of other files.
+
+Now you run all the same commands we did to configure and build libfreenect2. If it complains about a freenect2 folder already existing, make sure to delete that one from the last install and retry.
+
+After you complete the new install, you'll want to set another environment variable which tells libfreenect2 which graphics rendering pipeline to use.
+
+```shell
+export LIBFREENECT2_PIPELINE=cuda
+```
+
+You'll also want to re-build all of the ROS packages we installed above.
+
+### Uninstalling GPU Drivers
+
+```shell
+sudo apt-get --purge remove "*cuda*" "*cublas*" "*cufft*" "*cufile*" "*curand*"  "*cusolver*" "*cusparse*" "*gds-tools*" "*npp*" "*nvjpeg*" "nsight*" "*nvvm*"
+sudo apt-get remove --purge "*nvidia-driver*" "libxnvctrl*"
+```
