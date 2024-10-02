@@ -445,6 +445,8 @@ Make sure the kinects are connected to the computer and run this command to laun
 roslaunch ros_openpose run.launch camera:=kinect
 ```
 
+There's some strange threading behavior with this example where it closes the process immediately, and you may have to spam to the command a couple of times for the visualizer to actually stay open.
+
 ### Uninstalling OpenPose
 Since we installed everything in the Distrobox container, this is fairly simple.
 
@@ -529,7 +531,7 @@ distrobox create --name kinectubuntugpu --clone kinectubuntu --nvidia
 
 Now, if you run `nvidia-smi` in the environment as well, you should see the same output as on your host.
 
-Next, download the recommended [CUDA 11.7](https://developer.nvidia.com/cuda-11-7-1-download-archive) toolkit and follow the instructions listed on the website to install.
+Next, download the recommended [CUDA 11.7](https://developer.nvidia.com/cuda-11-7-1-download-archive) toolkit and follow the instructions listed on the website to install. Make sure you download the Run installer and specify you want to download Cuda 11.7! Otherwise a different version of Cuda will be installed!
 
 When you run the CUDA installer, make sure to uncheck installing the drivers (as we already did that). The installer may warn you that the drivers were not installed, and it will also tell you to add some paths to your environment variables so CUDA can be recognized by the terminal. To add a path to an already existing path variable, you can use this chain-like syntax:
 
