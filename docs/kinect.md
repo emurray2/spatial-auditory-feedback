@@ -533,7 +533,7 @@ Now, if you run `nvidia-smi` in the environment as well, you should see the same
 
 Next, download the recommended [CUDA 11.7](https://developer.nvidia.com/cuda-11-7-1-download-archive) toolkit and follow the instructions listed on the website to install. Make sure you download the Run installer and specify you want to download Cuda 11.7! Otherwise a different version of Cuda will be installed!
 
-When you run the CUDA installer, make sure to uncheck installing the drivers (as we already did that). The installer may warn you that the drivers were not installed, and it will also tell you to add some paths to your environment variables so CUDA can be recognized by the terminal. To add a path to an already existing path variable, you can use this chain-like syntax:
+When you run the CUDA installer, make sure to uncheck installing the drivers. Doing this will cause the installer to warn you that the drivers were not installed, and that is OK! Don't try to install any more drivers, as we already did that. You will likely get errors if you try to install another driver. The only thing you need to pay attention to is when the installer tells you to add some paths to your environment variables so CUDA can be recognized by the terminal. To add a path to an already existing path variable, you can use this chain-like syntax:
 
 ```shell
 export PATH_I_WANT_TO_ADD_TO=$PATH_I_WANT_TO_ADD_TO:/path/i/want/to/add
