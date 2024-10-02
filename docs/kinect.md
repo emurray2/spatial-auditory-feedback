@@ -539,7 +539,7 @@ When you run the CUDA installer, make sure to uncheck installing the drivers. Do
 export PATH_I_WANT_TO_ADD_TO=$PATH_I_WANT_TO_ADD_TO:/path/i/want/to/add
 ```
 
-This effectively will add `/path/i/want/to/add` to the list of paths contained in `$PATH_I_WANT_TO_ADD`.
+This effectively will add `/path/i/want/to/add` to the list of paths contained in `$PATH_I_WANT_TO_ADD_TO`.
 
 Whenever you restart your environment or terminal, you may need to run these commands again. If you don't want to do that, look into [adding them to your bashrc](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux-unix).
 
