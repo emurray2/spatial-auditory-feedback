@@ -183,7 +183,7 @@ sudo nano OpenNI.ini
 <p>Now any of the OpenNI2, libfreenect2, and NiTE programs should be able to run with the Kinects! The OpenNI2 programs should be in your path.</p>
 <ul>
 <li>The OpenNI2 programs are listed in <a href="https://github.com/OpenNI/OpenNI2/tree/master/Samples">https://github.com/OpenNI/OpenNI2/tree/master/Samples</a></li>
-<li>The libfreenect2 program is in <code>/path/to/libfreenect2/build/bin/</code>. It can be run via <code>./path/to/libfreenect2/build/bin/Protonect</code>.</li>
+<li>The libfreenect2 program is in <code>/path/to/libfreenect2/build/bin/</code>. It can be run via <code>./path/to/libfreenect2/build/bin/Protonect</code>. <strong>Note: As of recently, you might get an error along the lines of 'error: GLSL 3.30 is not supported. Supported versions are: 1.10, 1.20, 1.30, 1.40, 1.00 ES, and 3.00 ES'. To fix this error (in a simple yet possibly incorrect way), you can set this environment variable in your terminal before running Protonect:</strong> <code>export MESA_GL_VERSION_OVERRIDE=3.3</code>. <strong>Not sure why, but this does the trick for now. Thanks to: <a href="https://stackoverflow.com/a/57966892">https://stackoverflow.com/a/57966892</a>.</strong></li>
 <li>The NiTE programs are in <code>/path/to/NiTE-Linux-x64-2.2/Samples/Bin</code>. The one which shows the tracked skeleton is called <code>UserViewer</code> and can be run via <code>./path/to/NiTE-Linux-x64-2.2/Samples/Bin/UserViewer</code>. Note this program was intended for the original Kinect v1 sensor, so it doesn't perform optimally with the Kinect v2 sensors due to the down-scaled resolution. Further investigation on an alternative skeleton tracking method is in progress.</li>
 </ul>
 <h2 id="openpose">OpenPose</h2>
