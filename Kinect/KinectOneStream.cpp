@@ -142,6 +142,12 @@ void configureWrapper(op::WrapperT<op::Datum>& opWrapperT)
             __LINE__, __FUNCTION__, __FILE__);
         op::ConfigureLog::setPriorityThreshold((op::Priority)FLAGS_logging_level);
 
+        // Hardcoded stuff (no flags)
+        // Set scale zero to one
+        const auto keypointScaleMode = op::ScaleMode::ZeroToOne;
+        // Set maximum one person
+        int numPeopleMax = 1;
+
         // Applying user defined configuration - GFlags to program variables
         // outputSize
         const auto outputSize = op::flagsToPoint(op::String(FLAGS_output_resolution), "-1x-1");
@@ -156,8 +162,7 @@ void configureWrapper(op::WrapperT<op::Datum>& opWrapperT)
             op::opLog(
                 "Flag `write_keypoint` is deprecated and will eventually be removed. Please, use `write_json`"
                 " instead.", op::Priority::Max);
-        // keypointScaleMode
-        const auto keypointScaleMode = op::flagsToScaleMode(FLAGS_keypoint_scale);
+
         // heatmaps to add
         const auto heatMapTypes = op::flagsToHeatMaps(FLAGS_heatmaps_add_parts, FLAGS_heatmaps_add_bkg,
                                                       FLAGS_heatmaps_add_PAFs);
