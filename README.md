@@ -1,6 +1,9 @@
 # spatial-auditory-feedback
 An exploration of proprioceptive-auditory feedback in the ambisonics domain
 
+# Demo video
+[![Spatial Auditory Feedback](docs/DemoVideoThumbnail.png)](https://www.youtube.com/watch?v=S3In-TOWEvI "Spatial Auditory Feedback")
+
 # Folders
 - The **SpatialAuditoryFeedback-iOS folder** contains an iOS project which uses the LiDAR sensor on an iPad or an iPhone to track user motion and control spatial audio parameters through an app.
 - The **SpatialAuditoryFeedback-Processing** folder contains a project through a program called [Processing](https://processing.org/) which has a package called [SimpleOpenNI](https://github.com/totovr/SimpleOpenNI). This package utilizes the original Xbox 360 Kinect (PrimeSense) sensor to track the user and sends skeletal joint data to control spatial audio parameters in SuperCollider.
