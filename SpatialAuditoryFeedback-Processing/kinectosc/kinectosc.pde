@@ -30,9 +30,7 @@ import netP5.*;
 
 SimpleOpenNI kinect;
 OscP5 oscP5;
-OscP5 oscP5two;
 NetAddress myRemoteLocation;
-NetAddress myRemoteLocation2;
 
 void setup() {
   kinect = new SimpleOpenNI(this);
@@ -40,11 +38,10 @@ void setup() {
   kinect.enableHand();
   kinect.enableUser();// this changed
   size(640, 480);
+  frameRate(60);
   fill(255, 0, 0);
-  oscP5 = new OscP5(this, 57120);
-  oscP5two = new OscP5(this, 6666);
-  myRemoteLocation = new NetAddress("192.168.0.85", 57120);
-  myRemoteLocation2 = new NetAddress("192.168.0.85", 6666);
+  oscP5 = new OscP5(this, 6666);
+  myRemoteLocation = new NetAddress("10.11.12.100", 8888);
 }
 
 void draw() {
@@ -106,36 +103,72 @@ void drawSkeleton(int userId) {
   drawJoint(userId, SimpleOpenNI.SKEL_LEFT_HAND);
 }
 
-void drawJoint(int userId, int jointID) {
-  if (jointID == SimpleOpenNI.SKEL_LEFT_ELBOW) {
+float clip_float(float value, float lower, float upper) {
+  if (value > upper) {
+    value = upper;
+  }
+  if (value < lower) {
+    value = lower;
+  }
+  return value;
+}
+
+void getJointOSC(int userId, int jointID) {
+  if (jointID == SimpleOpenNI.SKEL_RIGHT_KNEE) {
     PMatrix3D jointOrientation = new PMatrix3D();
     OscMessage myMessage1 = new OscMessage("/source/azim");
-    OscMessage myMessage2 = new OscMessage("/source/elev");
-    OscMessage myMessage3 = new OscMessage("/kinect/psi");
     float rotationConfidence = kinect.getJointOrientationSkeleton(userId, jointID, jointOrientation);
     float phi = atan2(jointOrientation.m20, jointOrientation.m21);
-    float theta = acos(jointOrientation.m22);
-    float psi = -1.0 * atan2(jointOrientation.m02, jointOrientation.m12);
-    if (rotationConfidence < 0.5) {
+    if (rotationConfidence < 0.2) {
       return;
     }
-    myMessage1.add(0);
+    int index = 4;
+    myMessage1.add(index);
     myMessage1.add(phi);
-    myMessage2.add(0);
-    myMessage2.add(theta);
-    myMessage3.add(psi);
     oscP5.send(myMessage1, myRemoteLocation);
-    oscP5.send(myMessage2, myRemoteLocation);
-    oscP5.send(myMessage3, myRemoteLocation);
-    oscP5two.send(myMessage1, myRemoteLocation2);
-    oscP5two.send(myMessage2, myRemoteLocation2);
-    oscP5two.send(myMessage3, myRemoteLocation2);
   }
+  if (jointID == SimpleOpenNI.SKEL_HEAD) {
+    PMatrix3D jointOrientation = new PMatrix3D();
+    PVector jointPos = new PVector();
+    OscMessage myMessage2 = new OscMessage("/source/elev");
+    OscMessage sampleRateMessage = new OscMessage("/source/samplerate");
+    OscMessage cutoffFrequencyMessage = new OscMessage("/source/cutofffrequency");
+    OscMessage resonanceMessage = new OscMessage("/source/resonance");
+    float rotationConfidence = kinect.getJointOrientationSkeleton(userId, jointID, jointOrientation);
+    float positionConfidence = kinect.getJointPositionSkeleton(userId, jointID, jointPos);
+    float theta = acos(jointOrientation.m22);
+    float sample_rate = clip_float(map(jointPos.y, 20.0, 590.0, 1.0, 44800.0), 1.0, 44800.0);
+    float cutoff_frequency = clip_float(map(jointPos.y, 20.0, 590.0, 1.0, 24000.0), 1.0, 24000.0);
+    float resonance = clip_float(map(jointPos.y, 20.0, 590.0, 0.0, 4.0), 0.0, 4.0);
+    if (rotationConfidence < 0.2) {
+      return;
+    }
+    if (positionConfidence < 0.2) {
+      return;
+    }
+    int index = 4;
+    myMessage2.add(index);
+    myMessage2.add(0.0);
+    sampleRateMessage.add(index);
+    sampleRateMessage.add(sample_rate);
+    cutoffFrequencyMessage.add(index);
+    cutoffFrequencyMessage.add(cutoff_frequency);
+    resonanceMessage.add(index);
+    resonanceMessage.add(resonance);
+    oscP5.send(myMessage2, myRemoteLocation);
+    oscP5.send(sampleRateMessage, myRemoteLocation);
+    oscP5.send(cutoffFrequencyMessage, myRemoteLocation);
+    oscP5.send(resonanceMessage, myRemoteLocation);
+  }
+}
+
+void drawJoint(int userId, int jointID) {
+  getJointOSC(userId, jointID);
   PVector joint = new PVector();
 
   float confidence = kinect.getJointPositionSkeleton(userId, jointID,
     joint);
-  if (confidence < 0.5) {
+  if (confidence < 0.2) {
     return;
   }
   PVector convertedJoint = new PVector();
