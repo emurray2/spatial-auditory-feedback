@@ -190,8 +190,8 @@ void configureWrapper(op::WrapperT<op::Datum>& opWrapperT)
           poseMode, netInputSize, outputSize, keypointScaleMode, FLAGS_num_gpu, FLAGS_num_gpu_start,
           FLAGS_scale_number, (float)FLAGS_scale_gap, op::flagsToRenderMode(FLAGS_render_pose, multipleView),
           poseModel, !FLAGS_disable_blending, (float)FLAGS_alpha_pose, (float)FLAGS_alpha_heatmap,
-          FLAGS_part_to_show, op::String("/home/lab/openpose/models"), heatMapTypes, heatMapScaleMode, FLAGS_part_candidates,
-          (float)FLAGS_render_threshold, FLAGS_number_people_max, FLAGS_maximize_positives, FLAGS_fps_max,
+          FLAGS_part_to_show, op::String(FLAGS_model_folder), heatMapTypes, heatMapScaleMode, FLAGS_part_candidates,
+          (float)FLAGS_render_threshold, numPeopleMax, FLAGS_maximize_positives, FLAGS_fps_max,
           op::String(FLAGS_prototxt_path), op::String(FLAGS_caffemodel_path),
           (float)FLAGS_upsampling_ratio, enableGoogleLogging};
         opWrapperT.configure(wrapperStructPose);
