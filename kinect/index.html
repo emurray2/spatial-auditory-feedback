@@ -1,116 +1,121 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="shortcut icon" href="../img/favicon.ico" />
-    <title>Kinect - Spatial Auditory Feedback</title>
-    <link rel="stylesheet" href="../css/theme.css" />
-    <link rel="stylesheet" href="../css/theme_extra.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
-    
-      <script>
-        // Current page data
-        var mkdocs_page_name = "Kinect";
-        var mkdocs_page_input_path = "kinect.md";
-        var mkdocs_page_url = null;
-      </script>
-    
-    <!--[if lt IE 9]>
-      <script src="../js/html5shiv.min.js"></script>
-    <![endif]-->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-      <script>hljs.highlightAll();</script> 
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Kinect - Spatial Auditory Feedback</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Kinect";
+    var mkdocs_page_input_path = "kinect.md";
+    var mkdocs_page_url = "/kinect/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script> 
+  
 </head>
 
 <body class="wy-body-for-nav" role="document">
 
   <div class="wy-grid-for-nav">
+
+    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
-    <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href=".." class="icon icon-home"> Spatial Auditory Feedback
-        </a><div role="search">
+        <a href=".." class="icon icon-home"> Spatial Auditory Feedback</a>
+        <div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
-      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+    <input type="text" name="q" placeholder="Search docs" />
   </form>
 </div>
       </div>
 
-      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="..">Home</a>
-                </li>
-              </ul>
-              <ul class="current">
-                <li class="toctree-l1 current"><a class="reference internal current" href="./">Kinect</a>
-    <ul class="current">
-    <li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#programs">Programs</a>
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="..">Home</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../ios/">Ios</a>
+	    </li>
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href="./">Kinect</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#kinect">Kinect</a></li>
+    
         <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#prelude">Prelude</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#fun-stuff">Fun Stuff</a>
-    </li>
+        
+            <li><a class="toctree-l3" href="#introduction">Introduction</a></li>
+        
+            <li><a class="toctree-l3" href="#installation">Installation</a></li>
+        
+            <li><a class="toctree-l3" href="#programs">Programs</a></li>
+        
+            <li><a class="toctree-l3" href="#openpose">OpenPose</a></li>
+        
         </ul>
-    </li>
-    <li class="toctree-l2"><a class="reference internal" href="#openpose">OpenPose</a>
-        <ul>
-    <li class="toctree-l3"><a class="reference internal" href="#distrobox-installation">Distrobox Installation</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#openpose-installation">OpenPose installation</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#ros-installation">ROS Installation</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#kinect-bridge-installation">Kinect Bridge Installation</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#ros-openpose-installation">ROS OpenPose Installation</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#uninstalling-openpose">Uninstalling OpenPose</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#installing-with-gpu">Installing with GPU</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#uninstalling-gpu-drivers">Uninstalling GPU Drivers</a>
-    </li>
-        </ul>
-    </li>
+    
+
     </ul>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../processing/">Processing</a>
-                </li>
-              </ul>
-              <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../ios/">iOS</a>
-                </li>
-              </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../processing/">Processing</a>
+	    </li>
+          
+        </ul>
       </div>
-    </div>
+      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="..">Spatial Auditory Feedback</a>
-        
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">Spatial Auditory Feedback</a>
       </nav>
+
+      
       <div class="wy-nav-content">
-        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
-      <li class="breadcrumb-item active">Kinect</li>
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Kinect</li>
     <li class="wy-breadcrumbs-aside">
+      
     </li>
   </ul>
   <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-            <div class="section" itemprop="articleBody">
+          <div role="main">
+            <div class="section">
               
                 <h1 id="kinect">Kinect</h1>
 <h2 id="introduction">Introduction</h2>
@@ -120,42 +125,52 @@
 <p>Further exploration and testing is needed here. For now, the installation guide on the next page will cover installing libfreenect2 and the NiTE2.2 shared library.</p>
 <h2 id="installation">Installation</h2>
 <p>Step 1: Update the package list</p>
-<pre><code class="language-shell">sudo apt update
+<pre><code class="shell">sudo apt update
 </code></pre>
+
 <p>Step 2: Install build tools:</p>
-<pre><code class="language-shell">sudo apt install build-essential cmake pkg-config
+<pre><code class="shell">sudo apt install build-essential cmake pkg-config
 </code></pre>
+
 <p>Step 3: Install libusb (for getting the Kinect to talk to the USB ports)</p>
-<pre><code class="language-shell">sudo apt install libusb-1.0-0-dev
+<pre><code class="shell">sudo apt install libusb-1.0-0-dev
 </code></pre>
+
 <p>Step 4: Install graphics libraries (for displaying the camera output from the sensor)</p>
-<pre><code class="language-shell">sudo apt install libturbojpeg0-dev libglfw3-dev
+<pre><code class="shell">sudo apt install libturbojpeg0-dev libglfw3-dev
 </code></pre>
+
 <p>Step 5: Install OpenNI2 libraries/tools (they will be needed later for testing and installation of libfreenect2)</p>
-<pre><code class="language-shell">sudo apt install libopenni2-dev openni2-utils
+<pre><code class="shell">sudo apt install libopenni2-dev openni2-utils
 </code></pre>
+
 <p>Step 6: Clone libfreenect2 and enter the directory</p>
-<pre><code class="language-shell">git clone https://github.com/OpenKinect/libfreenect2.git
+<pre><code class="shell">git clone https://github.com/OpenKinect/libfreenect2.git
 cd libfreenect2
 </code></pre>
+
 <p>Step 7: Build and install the libfreenect2 library from source</p>
-<pre><code class="language-shell">mkdir build &amp;&amp; cd build
+<pre><code class="shell">mkdir build &amp;&amp; cd build
 cmake .. -DCMAKE_INSTALL_PREFIX=$HOME/freenect2
 make
 make install
 </code></pre>
+
 <p><strong>Note: You need to specify <code>cmake -Dfreenect2_DIR=$HOME/freenect2/lib/cmake/freenect2</code> for CMake based third-party application to find libfreenect2.</strong></p>
 <p>Step 8: Install the openni2 library from here</p>
-<pre><code class="language-shell">sudo make install-openni2
+<pre><code class="shell">sudo make install-openni2
 </code></pre>
+
 <p>Step 9: Set up udev rules for device access.</p>
-<pre><code class="language-shell">sudo cp ../platform/linux/udev/90-kinect2.rules /etc/udev/rules.d/
+<pre><code class="shell">sudo cp ../platform/linux/udev/90-kinect2.rules /etc/udev/rules.d/
 </code></pre>
+
 <p><strong>Note: If any Kinects were plugged into the USB ports, each one needs to be re-plugged again for the USB to recognize it with the updated rules.</strong></p>
 <p>Step 10: Create symbolic links to installed libraries which are missing and required for everything to work.</p>
-<pre><code class="language-shell">sudo ln -s /usr/lib/x86_64-linux-gnu/OpenNI2/Drivers/libfreenect2-openni2.so /usr/lib/x86_64-linux-gnu/OpenNI2/Drivers/libFreenectDriver.so
+<pre><code class="shell">sudo ln -s /usr/lib/x86_64-linux-gnu/OpenNI2/Drivers/libfreenect2-openni2.so /usr/lib/x86_64-linux-gnu/OpenNI2/Drivers/libFreenectDriver.so
 sudo ln -s /usr/lib/x86_64-linux-gnu/OpenNI2/Drivers/libfreenect2-openni2.so.0 /usr/lib/x86_64-linux-gnu/OpenNI2/Drivers/libFreenectDriver.so.0
 </code></pre>
+
 <p><strong>Note: Remember these paths, and make sure they exist. They will be needed when we run the NiTE tracker in the next steps below. See: <a href="https://github.com/OpenKinect/libfreenect2/issues/639">https://github.com/OpenKinect/libfreenect2/issues/639</a> for more context.</strong></p>
 <h2 id="programs">Programs</h2>
 <h3 id="prelude">Prelude</h3>
@@ -165,9 +180,10 @@ sudo ln -s /usr/lib/x86_64-linux-gnu/OpenNI2/Drivers/libfreenect2-openni2.so.0 /
 <li>Download and unzip the NiTE tracking library by PrimeSense archived here: <a href="https://bitbucket.org/kaorun55/openni-2.2/src/2f54272802bfd24ca32f03327fbabaf85ac4a5c4/NITE%202.2%20%CE%B1/?at=master">https://bitbucket.org/kaorun55/openni-2.2/src/2f54272802bfd24ca32f03327fbabaf85ac4a5c4/NITE%202.2%20%CE%B1/?at=master</a>. Rich 133B has a 64-bit Linux system, so it should be the x64-Linux one.</li>
 <li>Remember the last note about those paths? This is where they are needed. Open the file located in the downloaded NiTE package as described below:</li>
 </ul>
-<pre><code class="language-shell">cd ~/Downloads/NiTE-Linux-x64-2.2/Samples/Bin
+<pre><code class="shell">cd ~/Downloads/NiTE-Linux-x64-2.2/Samples/Bin
 sudo nano OpenNI.ini
 </code></pre>
+
 <ul>
 <li>
 <p>Uncomment the line ';Repository=OpenNI2/Drivers' by removing the ';' and set repository to the path. It should look something like this:
@@ -177,8 +193,9 @@ sudo nano OpenNI.ini
 <p>Set the UBFS buffer size to 32MB (this one is required on every boot). Otherwise libusb will not have enough memory, as the default on system boot is 16MB. Each Kinect v2 sensor uses 16MB which adds up to 32MB total. Read this guide for more info on how to calculate the memory: <a href="https://www.flir.com/support-center/iis/machine-vision/application-note/understanding-usbfs-on-linux/?srsltid=AfmBOood-y0AC2UhSXvvTEc693SOaK5ANXoG_BEoVPKJCJtMeKu25VND">Understanding USBFS on Linux</a>.</p>
 </li>
 </ul>
-<pre><code class="language-shell">sudo sh -c 'echo 32 &gt; /sys/module/usbcore/parameters/usbfs_memory_mb'
+<pre><code class="shell">sudo sh -c 'echo 32 &gt; /sys/module/usbcore/parameters/usbfs_memory_mb'
 </code></pre>
+
 <h3 id="fun-stuff">Fun Stuff</h3>
 <p>Now any of the OpenNI2, libfreenect2, and NiTE programs should be able to run with the Kinects! The OpenNI2 programs should be in your path.</p>
 <ul>
@@ -191,16 +208,19 @@ sudo nano OpenNI.ini
 <p>The real question is what new solutions are out there for skeleton tracking using the Kinectv2 sensor? The following tutorial will guide you through installing a Kinect v2 compatible solution for Carnegie Mellon University's library for skeleton tracking called <a href="https://github.com/CMU-Perceptual-Computing-Lab/openpose">OpenPose</a>.</p>
 <h3 id="distrobox-installation">Distrobox Installation</h3>
 <p>Many of the packages used for the Kinect are not supported on later distro versions anymore, so it would be nice to setup some sort of container which can hold and run our work. This is the perfect job for Docker, a package which allows the containerization of a Ubuntu image -- or pretty much any Linux distro for that matter. Docker has a nice wrapper which makes the job even easier called <a href="https://wiki.archlinux.org/title/Distrobox">Distrobox</a>. It can be installed with aptitude via the following command:</p>
-<pre><code class="language-shell">sudo apt install distrobox
+<pre><code class="shell">sudo apt install distrobox
 </code></pre>
+
 <p>A container can be created with a name and an image in a registry, such as the docker.io registry. Example url: docker.io/barebuild/ubuntu:14.04. In this installation, we will use the official Ubuntu 20.04 distro which is the latest compatible distro for this installation. Then we can give the container a name we will remember for our use case, such as kinectubuntu.</p>
-<pre><code class="language-shell">distrobox create --name kinectubuntu --image ubuntu:20.04
+<pre><code class="shell">distrobox create --name kinectubuntu --image ubuntu:20.04
 </code></pre>
+
 <p>Then you can enter the container you created using:</p>
-<pre><code class="language-shell">distrobox enter kinectubuntu
+<pre><code class="shell">distrobox enter kinectubuntu
 </code></pre>
+
 <p>After this command, you should see something like this:</p>
-<pre><code class="language-shell">evan@evanmurray-MBP:~$ distrobox enter kinectubuntu
+<pre><code class="shell">evan@evanmurray-MBP:~$ distrobox enter kinectubuntu
 Starting container...                            [ OK ]
 Installing basic packages...                     [ OK ]
 Setting up devpts mounts...                      [ OK ]
@@ -223,8 +243,9 @@ Ensuring user's access...                        [ OK ]
 Container Setup Complete!
 evan@kinectubuntu:~$
 </code></pre>
+
 <p>Notice how now the hostname is the name of the container. You should now install this package, as it will be needed later. You can also use it to verify the version of Ubuntu.</p>
-<pre><code class="language-shell">evan@kinectubuntu:~$ sudo apt install lsb-release
+<pre><code class="shell">evan@kinectubuntu:~$ sudo apt install lsb-release
 evan@kinectubuntu:~$ lsb_release -a
 No LSB modules are available.
 Distributor ID: Ubuntu
@@ -233,30 +254,37 @@ Release:        20.04
 Codename:       focal
 evan@kinectubuntu:~$
 </code></pre>
+
 <p>You'll also want to install <code>nano</code> and <code>git</code>. Nano can be used as a text editor, and git can be used for cloning some required repositories for this installation.</p>
-<pre><code class="language-shell">sudo apt install nano git
+<pre><code class="shell">sudo apt install nano git
 </code></pre>
+
 <h3 id="openpose-installation">OpenPose installation</h3>
 <p>First, you'll want to install the OpenCV development libraries and create a symlink for opencv2 to find opencv4.</p>
-<pre><code class="language-shell">sudo apt install libopencv-dev
+<pre><code class="shell">sudo apt install libopencv-dev
 sudo ln -s /usr/include/opencv4/opencv2 /usr/include/opencv2
 </code></pre>
+
 <p>You'll also want to install the CMake GUI built with Qt to build the OpenPose project.</p>
-<pre><code class="language-shell">sudo apt install cmake-qt-gui
+<pre><code class="shell">sudo apt install cmake-qt-gui
 </code></pre>
+
 <p>Then, since the Caffe machine learning models with the default version of OpenPose have issues, you can clone this fork to install them correctly. We'll also want to initialize the submodules.</p>
-<pre><code class="language-shell">git clone https://github.com/AlecDusheck/openpose.git
+<pre><code class="shell">git clone https://github.com/AlecDusheck/openpose.git
 cd openpose
 git submodule update --init --recursive --remote
 </code></pre>
+
 <p>Now that we've cloned the repo, you can run this script to install the OpenPose dependencies:</p>
-<pre><code class="language-shell">sudo bash ./scripts/ubuntu/install_deps.sh
+<pre><code class="shell">sudo bash ./scripts/ubuntu/install_deps.sh
 </code></pre>
+
 <p>Then create the build directory, go to it, and run configure to download the Caffe models.</p>
-<pre><code class="language-shell">mkdir build
+<pre><code class="shell">mkdir build
 cd build
 cmake-gui ..
 </code></pre>
+
 <p>A window should pop up which looks like this. Make sure the source folder is set to the root of OpenPose and the build folder is set to the build folder you just created.</p>
 <p><img alt="CMakeWindow" src="../CmakeGui1.png" /></p>
 <p>Now click the Configure button and make sure the generator is set to "Unix Makefiles".</p>
@@ -271,13 +299,16 @@ cmake-gui ..
 /home/evan/openpose/models/hand/pose_iter_102000.caffemodel
 /home/evan/openpose/models/face/pose_iter_116000.caffemodel
 </code></pre>
+
 <p>Now, delete your OpenPose folder. This may seem counter-intuitive, but you'll see why. Clone the OpenPose from the official CMU repo:</p>
-<pre><code class="language-shell">git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose.git
+<pre><code class="shell">git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose.git
 </code></pre>
+
 <p>Now you should checkout version 1.7.0, as this is the latest supported version by another tool we will use.</p>
-<pre><code class="language-shell">cd openpose
+<pre><code class="shell">cd openpose
 git checkout tags/v1.7.0
 </code></pre>
+
 <p>Now, follow the same steps we followed for the previous OpenPose repo. On the second CMake configure, you will get another error.</p>
 <pre><code>CMake Error at cmake/Utils.cmake:8 (file):
   file DOWNLOAD HASH mismatch
@@ -290,60 +321,74 @@ git checkout tags/v1.7.0
 Call Stack (most recent call first):
   CMakeLists.txt:994 (download_model)
 </code></pre>
+
 <p>This is why we used the other repo to download the models. Now locate those models, and copy each one to the correct directory to replace the existing model file there (which should be 0B in size since it failed to download). Once that's done, run configure again, and it should successfully complete this time. Now click the "Generate" button to generate the build files.</p>
 <p>Now run this make command to make OpenPose:</p>
-<pre><code class="language-shell">make -j`nproc`
+<pre><code class="shell">make -j`nproc`
 </code></pre>
+
 <p>Then run this to install the library on the system:</p>
-<pre><code class="language-shell">sudo make install
+<pre><code class="shell">sudo make install
 </code></pre>
+
 <h3 id="ros-installation">ROS Installation</h3>
 <p>First, add this source to your sources file to download the ROS packages:</p>
-<pre><code class="language-shell">sudo sh -c 'echo &quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list'
+<pre><code class="shell">sudo sh -c 'echo &quot;deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main&quot; &gt; /etc/apt/sources.list.d/ros-latest.list'
 </code></pre>
+
 <p>Then add it to your keys:</p>
-<pre><code class="language-shell">curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+<pre><code class="shell">curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
 </code></pre>
+
 <p>Now update your package index:</p>
-<pre><code class="language-shell">sudo apt update
+<pre><code class="shell">sudo apt update
 </code></pre>
+
 <p>Now install ROS noetic:</p>
-<pre><code class="language-shell">sudo apt install ros-noetic-desktop-full
+<pre><code class="shell">sudo apt install ros-noetic-desktop-full
 </code></pre>
+
 <p>Now activate the ROS environment:</p>
 <pre><code>source /opt/ros/noetic/setup.bash
 </code></pre>
+
 <p>Install and initialize ROS dependencies</p>
-<pre><code class="language-shell">sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
+<pre><code class="shell">sudo apt install python3-rosdep python3-rosinstall python3-rosinstall-generator python3-wstool build-essential
 sudo apt install python3-rosdep
 sudo rosdep init
 rosdep update
 </code></pre>
+
 <p>Now create and initialize catkin workspace via the following commands:</p>
-<pre><code class="language-shell">mkdir -p ~/catkin_ws/src
+<pre><code class="shell">mkdir -p ~/catkin_ws/src
 cd ~/catkin_ws/
 catkin_make
 source devel/setup.bash
 </code></pre>
+
 <p>Copy the contents of this script and paste it in a file called <code>fix_cpp.py</code> to fix the CMake files later: <a href="https://gist.githubusercontent.com/Meltwin/1ee35296d2bb86fee19d639580e3c91f/raw/13b8d626733981cdf58244708e5cba1ee5d87e1c/change_cpp.py">https://gist.githubusercontent.com/Meltwin/1ee35296d2bb86fee19d639580e3c91f/raw/13b8d626733981cdf58244708e5cba1ee5d87e1c/change_cpp.py</a></p>
-<pre><code class="language-shell">sudo nano fix_cpp.py
+<pre><code class="shell">sudo nano fix_cpp.py
 </code></pre>
+
 <h3 id="kinect-bridge-installation">Kinect Bridge Installation</h3>
 <p>If you've followed the steps <a href="#installation">above</a>, you should already have libfreenect2 installed. However, you may want to re-install it in the container since some of the dependencies won't be installed. You can do so by removing the libfreenect2 and freenect2 folders and re-following the installation steps inside the container. You can skip step 9 since the container looks to the host for usb devices. You can also skip step 10 since it's already been done, and again the container relies on the host system for these libraries.</p>
 <p>Go to the <code>src</code> directory and clone the kinect bridge repo there:</p>
-<pre><code class="language-shell">cd src
+<pre><code class="shell">cd src
 git clone https://github.com/code-iai/iai_kinect2.git
 </code></pre>
+
 <p>Go to the repo directory and install all the ROS dependencies.</p>
-<pre><code class="language-shell">cd iai_kinect2
+<pre><code class="shell">cd iai_kinect2
 rosdep install -r --from-paths .
 </code></pre>
+
 <p>Temporarily move the CMakeLists.txt file at the root of <code>src</code> directory somewhere else, and run the <code>fix_cpp.py</code> script at the root of the workspace.</p>
-<pre><code class="language-shell">cd ~/catkin_ws
+<pre><code class="shell">cd ~/catkin_ws
 python3 fix_cpp.py
 </code></pre>
+
 <p>You should see something like this:</p>
-<pre><code class="language-shell">evan@kinectubuntu:~/catkin_ws$ python3 fix_cpp.py
+<pre><code class="shell">evan@kinectubuntu:~/catkin_ws$ python3 fix_cpp.py
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃                                     CMakeLists to C++17 Utils                                      ┃
 ┃                                           Meltwin - 2023                                           ┃
@@ -356,9 +401,11 @@ python3 fix_cpp.py
 ▷ Found ./src/iai_kinect2/kinect2_registration/CMakeLists.txt Fixed !
 evan@kinectubuntu:~/catkin_ws$
 </code></pre>
+
 <p>Next, move the CMakeLists.txt back and build the package via the following command:</p>
-<pre><code class="language-shell">catkin_make -DCMAKE_BUILD_TYPE=&quot;Release&quot;
+<pre><code class="shell">catkin_make -DCMAKE_BUILD_TYPE=&quot;Release&quot;
 </code></pre>
+
 <p>You'll get a bunch of errors, but don't worry. We will fix them now. Do the following:</p>
 <ul>
 <li>Open up the file(s) where the error occurs</li>
@@ -374,19 +421,22 @@ evan@kinectubuntu:~/catkin_ws$
 <p>Now save all the files, run the command again, and it should build successfully!</p>
 <h3 id="ros-openpose-installation">ROS OpenPose Installation</h3>
 <p>Go back to the <code>src</code> folder of the catkin workspace and clone another repo.</p>
-<pre><code class="language-shell">cd src
+<pre><code class="shell">cd src
 git clone https://github.com/ravijo/ros_openpose.git
 </code></pre>
+
 <p>Go to the repo directory and install all the ROS dependencies.</p>
-<pre><code class="language-shell">cd ros_openpose
+<pre><code class="shell">cd ros_openpose
 rosdep install -r --from-paths .
 </code></pre>
+
 <p>Temporarily move the CMakeLists.txt file at the root of <code>src</code> directory somewhere else, and run the <code>fix_cpp.py</code> script at the root of the workspace.</p>
-<pre><code class="language-shell">cd ~/catkin_ws
+<pre><code class="shell">cd ~/catkin_ws
 python3 fix_cpp.py
 </code></pre>
+
 <p>You should see something like this:</p>
-<pre><code class="language-shell">evan@kinectubuntu:~/catkin_ws$ python3 fix_cpp.py
+<pre><code class="shell">evan@kinectubuntu:~/catkin_ws$ python3 fix_cpp.py
 ┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
 ┃                                     CMakeLists to C++17 Utils                                      ┃
 ┃                                           Meltwin - 2023                                           ┃
@@ -400,45 +450,54 @@ python3 fix_cpp.py
 ▷ Found ./src/ros_openpose/CMakeLists.txt Fixed !
 evan@kinectubuntu:~/catkin_ws$
 </code></pre>
+
 <p>Now move the CMakeLists.txt file back and run the make command at the root of the workspace to build the package.</p>
-<pre><code class="language-shell">catkin_make
+<pre><code class="shell">catkin_make
 </code></pre>
+
 <p>Next, go to the scripts folder of the ros openpose and make all the files executable.</p>
-<pre><code class="language-shell">roscd ros_openpose/scripts
+<pre><code class="shell">roscd ros_openpose/scripts
 chmod +x *.py
 </code></pre>
+
 <p>Now, install this python package to allow the visualizer to correctly work.</p>
-<pre><code class="language-shell">sudo apt install python-is-python3
+<pre><code class="shell">sudo apt install python-is-python3
 </code></pre>
+
 <p>Make sure the kinects are connected to the computer and run this command to launch the visualizer:</p>
-<pre><code class="language-shell">roslaunch ros_openpose run.launch camera:=kinect
+<pre><code class="shell">roslaunch ros_openpose run.launch camera:=kinect
 </code></pre>
+
 <p>There's some strange threading behavior with this example where it closes the process immediately, and you may have to spam to the command a couple of times for the visualizer to actually stay open.</p>
 <h3 id="uninstalling-openpose">Uninstalling OpenPose</h3>
 <p>Since we installed everything in the Distrobox container, this is fairly simple.</p>
 <p>Step 1 is to remove all of the folders you git cloned for the project.</p>
-<pre><code class="language-shell">cd ~
+<pre><code class="shell">cd ~
 sudo rm -r catkin_ws
 sudo rm -r openpose
 sudo rm -r libfreenect2
 sudo rm -r freenect2
 </code></pre>
+
 <p>Then, exit the container via the <code>logout</code> command. It should look something like this.</p>
-<pre><code class="language-shell">evan@kinectubuntu:~$ logout
+<pre><code class="shell">evan@kinectubuntu:~$ logout
 evan@evanmurray-MBP:~$
 </code></pre>
+
 <p>Notice how now the host has changed back to our actual hostname. You can now stop the container and remove it.</p>
-<pre><code class="language-shell">distrobox stop kinectubuntu
+<pre><code class="shell">distrobox stop kinectubuntu
 distrobox rm kinectubuntu
 </code></pre>
+
 <h3 id="installing-with-gpu">Installing with GPU</h3>
 <p>If you try to run OpenPose with the CPU only, you may notice it's very slow. One way the computation can be sped up is by using a GPU. The animation below was achieved realtime using an Nvidia GeForce GTX 1080 graphics card.</p>
 <p><img alt="GPUOpenPose" src="../GPUOpenPose.gif" /></p>
 <p>To do this, first follow your GPU manufacturer's instructions on installing the GPU drivers. Make sure to install these outside of your distrobox on your regular system. An Nvidia GPU is recommended since Ubuntu makes it easy to install the drivers, and Nvidia devices support <a href="https://developer.nvidia.com/cuda-toolkit">CUDA</a> by default (which we will need). Run the following command to automatically install the best GPU drivers for your system:</p>
-<pre><code class="language-shell">sudo ubuntu-drivers autoinstall
+<pre><code class="shell">sudo ubuntu-drivers autoinstall
 </code></pre>
+
 <p>Once the drivers are installed, double check your graphics card is showing up through its drivers. There are a couple ways to do this with an Nvidia card:</p>
-<pre><code class="language-shell">lab@terra:~$ nvidia-smi
+<pre><code class="shell">lab@terra:~$ nvidia-smi
 Tue Oct  1 01:09:13 2024
 +-----------------------------------------------------------------------------------------+
 | NVIDIA-SMI 550.107.02             Driver Version: 550.107.02     CUDA Version: 12.4     |
@@ -461,21 +520,25 @@ Tue Oct  1 01:09:13 2024
 +-----------------------------------------------------------------------------------------+
 lab@terra:~$
 </code></pre>
+
 <p>And:</p>
-<pre><code class="language-shell">lab@terra:~$ cat /proc/driver/nvidia/version
+<pre><code class="shell">lab@terra:~$ cat /proc/driver/nvidia/version
 NVRM version: NVIDIA UNIX x86_64 Kernel Module  550.107.02  Wed Jul 24 23:53:00 UTC 2024
 GCC version:
 lab@terra:~$
 </code></pre>
+
 <p>You might need to reboot your system after installing the drivers for these changes to take effect.</p>
 <p>Then, let's create a copy of the distrobox we setup earlier. However, this time we will pass the <code>--nvidia</code> flag to enable the environment to use the GPU drivers which we just installed on our host (regular) system.</p>
-<pre><code class="language-shell">distrobox create --name kinectubuntugpu --clone kinectubuntu --nvidia
+<pre><code class="shell">distrobox create --name kinectubuntugpu --clone kinectubuntu --nvidia
 </code></pre>
+
 <p>Now, if you run <code>nvidia-smi</code> in the environment as well, you should see the same output as on your host.</p>
 <p>Next, download the recommended <a href="https://developer.nvidia.com/cuda-11-7-1-download-archive">CUDA 11.7</a> toolkit and follow the instructions listed on the website to install. Make sure you download the Run installer and specify you want to download Cuda 11.7! Otherwise a different version of Cuda will be installed!</p>
 <p>When you run the CUDA installer, make sure to uncheck installing the drivers. Doing this will cause the installer to warn you that the drivers were not installed, and that is OK! Don't try to install any more drivers, as we already did that. You will likely get errors if you try to install another driver. The only thing you need to pay attention to is when the installer tells you to add some paths to your environment variables so CUDA can be recognized by the terminal. To add a path to an already existing path variable, you can use this chain-like syntax:</p>
-<pre><code class="language-shell">export PATH_I_WANT_TO_ADD_TO=$PATH_I_WANT_TO_ADD_TO:/path/i/want/to/add
+<pre><code class="shell">export PATH_I_WANT_TO_ADD_TO=$PATH_I_WANT_TO_ADD_TO:/path/i/want/to/add
 </code></pre>
+
 <p>This effectively will add <code>/path/i/want/to/add</code> to the list of paths contained in <code>$PATH_I_WANT_TO_ADD_TO</code>.</p>
 <p>Whenever you restart your environment or terminal, you may need to run these commands again. If you don't want to do that, look into <a href="https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux-unix">adding them to your bashrc</a>.</p>
 <p>Next, you should install cuDNN which is a neural net extension to CUDA: <a href="https://developer.nvidia.com/cudnn">https://developer.nvidia.com/cudnn</a>. The install process is pretty similar to that of the CUDA install. Follow the instructions on the Nvidia website.</p>
@@ -483,25 +546,29 @@ lab@terra:~$
 <p><img alt="GPUMODECUDA" src="../GPUMODECUDA.png" /></p>
 <p>Then, go through the whole build and install process as we did above.</p>
 <p>Now, we're going to build libfreenect2 again but with GPU support. Before we do this, you'll want to clone the CUDA samples repo in the home directory of your environment (you'll see why)</p>
-<pre><code class="language-shell">git clone https://github.com/NVIDIA/cuda-samples.git
+<pre><code class="shell">git clone https://github.com/NVIDIA/cuda-samples.git
 cd cuda-samples
 git checkout tags/v11.6
 </code></pre>
+
 <p>The last command will checkout the CUDA version below ours (11.7). You want to try and get as close as possible to the version number without going above the version of CUDA you have installed.</p>
 <p>Now, copy this folder to your CUDA folder which should be located in <code>/usr/local</code></p>
-<pre><code class="language-shell">sudo cp -r cuda-samples /usr/local/cuda-11.7
+<pre><code class="shell">sudo cp -r cuda-samples /usr/local/cuda-11.7
 </code></pre>
+
 <p>Now go to your root libfreenect2:</p>
-<pre><code class="language-shell">cd ~/libfreenect2
+<pre><code class="shell">cd ~/libfreenect2
 </code></pre>
+
 <p>Open the CMakeLists.txt file with your favorite text editor and change the line <code>"${CUDA_TOOLKIT_ROOT_DIR}/samples/common/inc"</code> to <code>"${CUDA_TOOLKIT_ROOT_DIR}/cuda-samples/Common"</code>. This will allow CMake to find the include files for these which are very important. Ever since CUDA 11.6, the samples are not shipped with the toolkit which is why we need to install them separately. Otherwise you will get some error about missing a math_helper.h file and a bunch of other files.</p>
 <p>Now you run all the same commands we did to configure and build libfreenect2. If it complains about a freenect2 folder already existing, make sure to delete that one from the last install and retry.</p>
 <p>After you complete the new install, you'll want to set another environment variable which tells libfreenect2 which graphics rendering pipeline to use.</p>
-<pre><code class="language-shell">export LIBFREENECT2_PIPELINE=cuda
+<pre><code class="shell">export LIBFREENECT2_PIPELINE=cuda
 </code></pre>
+
 <p>You'll also want to re-build all of the ROS packages we installed above.</p>
 <h3 id="uninstalling-gpu-drivers">Uninstalling GPU Drivers</h3>
-<pre><code class="language-shell">sudo apt-get --purge remove &quot;*cuda*&quot; &quot;*cublas*&quot; &quot;*cufft*&quot; &quot;*cufile*&quot; &quot;*curand*&quot;  &quot;*cusolver*&quot; &quot;*cusparse*&quot; &quot;*gds-tools*&quot; &quot;*npp*&quot; &quot;*nvjpeg*&quot; &quot;nsight*&quot; &quot;*nvvm*&quot;
+<pre><code class="shell">sudo apt-get --purge remove &quot;*cuda*&quot; &quot;*cublas*&quot; &quot;*cufft*&quot; &quot;*cufile*&quot; &quot;*curand*&quot;  &quot;*cusolver*&quot; &quot;*cusparse*&quot; &quot;*gds-tools*&quot; &quot;*npp*&quot; &quot;*nvjpeg*&quot; &quot;nsight*&quot; &quot;*nvvm*&quot;
 sudo apt-get remove --purge &quot;*nvidia-driver*&quot; &quot;libxnvctrl*&quot;
 sudo apt autoremove --purge
 sudo apt autoclean
@@ -509,49 +576,48 @@ sudo apt-get purge $(dpkg -l | awk '$2~/nvidia/ {print $2}')
 </code></pre>
               
             </div>
-          </div><footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href=".." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
         <a href="../processing/" class="btn btn-neutral float-right" title="Processing">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../ios/" class="btn btn-neutral" title="Ios"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
     </div>
+  
 
   <hr/>
 
   <div role="contentinfo">
     <!-- Copyright etc -->
+    
   </div>
 
-  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-          
+	  
         </div>
       </div>
 
     </section>
-
+    
   </div>
 
-  <div class="rst-versions" role="note" aria-label="Versions">
-  <span class="rst-current-version" data-toggle="rst-current-version">
-    
-    
-      <span><a href=".." style="color: #fcfcfc">&laquo; Previous</a></span>
-    
-    
-      <span><a href="../processing/" style="color: #fcfcfc">Next &raquo;</a></span>
-    
-  </span>
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../ios/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../processing/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
 </div>
-    <script src="../js/jquery-3.6.0.min.js"></script>
-    <script>var base_url = "..";</script>
-    <script src="../js/theme_extra.js"></script>
     <script src="../js/theme.js"></script>
-      <script src="../search/main.js"></script>
-    <script>
-        jQuery(function () {
-            SphinxRtdTheme.Navigation.enable(true);
-        });
-    </script>
 
 </body>
 </html>
