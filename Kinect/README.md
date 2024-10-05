@@ -1,2 +1,2 @@
 # Submodules/Code for working with Kinect
-See [https://github.gatech.edu/pages/L42i/spatial-auditory-feedback/kinect/](https://github.gatech.edu/pages/L42i/spatial-auditory-feedback/kinect/) for instructions on how to get started.
+See [https://emurray2.github.io/spatial-auditory-feedback/kinect/](https://emurray2.github.io/spatial-auditory-feedback/kinect/) for instructions on how to get started.
