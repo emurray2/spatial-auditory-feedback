@@ -62,7 +62,7 @@ public:
             m_listener.waitForNewFrame(m_frames);
             libfreenect2::Frame *rgb = m_frames[libfreenect2::Frame::Color];
             cv::Mat(rgb->height, rgb->width, CV_8UC4, rgb->data).copyTo(rgbmat);
-            cv::cvtColor(rgbmat, rgbmat, CV_RGB2BGR);
+            cv::cvtColor(rgbmat, rgbmat, cv::COLOR_RGB2BGR);
             const cv::Mat cvInputData = rgbmat;
             datumPtr->cvInputData = OP_CV2OPCONSTMAT(cvInputData);
 
