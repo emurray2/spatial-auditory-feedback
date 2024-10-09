@@ -10,6 +10,3 @@
 [submodule "Kinect/ros_openpose"]
 	path = Kinect/ros_openpose
 	url = https://github.com/ravijo/ros_openpose.git
-[submodule "Kinect/SCKinect"]
-	path = Kinect/SCKinect
-	url = https://github.com/L42i/SCKinect.git
