@@ -18,5 +18,14 @@
 				World_Audio.play(\learningMusic, 1, 2, 1, 1, 0, true, \music)
 			}.forkInScene;
 		};
+
+		sceneScripts[\keyDown] = {|key|
+			switch(key.key)
+			// Return
+			{16777220} {
+				World_Audio.stopEverything;
+				World_World.quitGame;
+			}
+		}
 	}
 }

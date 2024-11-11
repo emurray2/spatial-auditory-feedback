@@ -29,12 +29,17 @@
 		// Detect 0-9 key inputs for now to test
 		// specific game states
 		sceneScripts[\keyDown] = {|key|
-			if (key.key == 49) {
-				World_World.startGame(\buildLearningModeScene);
-			}
+			switch(key.key)
+			// 1
+			{49} { World_World.startGame(\buildLearningModeScene) }
 		};
 
 		sceneScripts[\leaveScene] = { World_Audio.release(\initialMusic) };
-		sceneScripts[\revisitScene] = { World_Audio.play(\initialMusic, 1, 3, 1, 1, 0, true, \music) };
+		sceneScripts[\revisitScene] = {
+			World_Audio.releaseEverything;
+			scenes[1..].do(_.free);
+			scenes = scenes[..0];   // remove old scenes
+			World_Audio.play(\initialMusic, 3, 2, 1, 1, 0, true, \music);
+		};
 	}
 }
