@@ -18,6 +18,9 @@
 		World_Scene.setupScene(26, 17, 50, 50, 1, \titleScreen_ASSET_DEF);
 
 		// Game initialization
+		sceneScripts[\startGame] = { projectName = "Dance Sounds" };
+
+		// Scene initialization
 		sceneScripts[\startScene] = {
 			{
 				1.wait;
