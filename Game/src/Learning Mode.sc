@@ -21,6 +21,7 @@
 
 		sceneScripts[\keyDown] = {|key|
 			switch(key.key)
+			// 1
 			{49} {
 				World_Scene.createScene(\buildPracticeModeScene);
 			}
