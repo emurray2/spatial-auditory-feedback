@@ -14,5 +14,9 @@
 + World_Scene {
 	*buildTitleScreenScene {
 		World_Scene.setupScene(26, 17, 50, 50, 1, \titleScreen_ASSET_DEF);
+		{
+			1.wait;
+			World_Audio.play(\initialMusic, 1, 5, 1, 1, 0, true, \music);
+		}.forkInScene
 	}
 }
