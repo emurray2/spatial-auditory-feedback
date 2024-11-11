@@ -13,3 +13,6 @@
 [submodule "Kinect/SCKinect"]
 	path = Kinect/SCKinect
 	url = https://github.com/L42i/SCKinect.git
+[submodule "Game/Supercollider-World_World"]
+	path = Game/Supercollider-World_World
+	url = https://github.com/neilcosgrove/Supercollider-World_World.git
