@@ -22,9 +22,7 @@
 		sceneScripts[\keyDown] = {|key|
 			switch(key.key)
 			// 1
-			{49} {
-				World_Scene.createScene(\buildPracticeModeScene);
-			}
+			{49} { World_Scene.createScene(\buildPracticeModeScene) }
 			// Return
 			{16777220} {
 				World_Audio.stopEverything;

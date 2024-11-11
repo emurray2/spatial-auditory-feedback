@@ -26,6 +26,8 @@
 				World_Audio.stopEverything;
 				World_World.quitGame;
 			}
-		}
+		};
+
+		sceneScripts[\leaveScene] = { World_Audio.release(\practiceMusic) };
 	}
 }
