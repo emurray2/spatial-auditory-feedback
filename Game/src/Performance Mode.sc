@@ -21,6 +21,8 @@
 
 		sceneScripts[\keyDown] = {|key|
 			switch(key.key)
+			// 2
+			{50} { World_Scene.createScene(\buildYouDidAlrightScene) }
 			// Return
 			{16777220} {
 				World_Audio.stopEverything;
