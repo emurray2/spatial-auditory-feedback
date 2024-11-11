@@ -5,7 +5,6 @@ These songs represent the vibe of each state in the game, such as if a player lo
 
 - **AwayFromKeyboard.mp3 - mJB1.mp3**
 - **LearningMode.mp3 - mHO2.mp3**
-- **MainMenu.mp3 - mBR3.mp3**
 - **PerformanceMode.mp3 - mKR4.mp3**
 - **PracticeMode.mp3 - mKR2.mp3**
 - **YouDidAlright.mp3 - mPO1.mp3**
