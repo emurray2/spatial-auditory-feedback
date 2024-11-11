@@ -21,11 +21,16 @@
 
 		sceneScripts[\keyDown] = {|key|
 			switch(key.key)
+			{49} {
+				World_Scene.createScene(\buildPracticeModeScene);
+			}
 			// Return
 			{16777220} {
 				World_Audio.stopEverything;
 				World_World.quitGame;
 			}
-		}
+		};
+
+		sceneScripts[\leaveScene] = { World_Audio.release(\learningMusic) };
 	}
 }
