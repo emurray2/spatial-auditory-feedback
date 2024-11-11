@@ -4,7 +4,8 @@
 	performanceMode_ASSET_DEF {
 		imagePaths = IdentityDictionary[];
 		bufferPaths = IdentityDictionary[
-			\performanceMusic -> "../../../assets/3rdparty/PerformanceMode.mp3"
+			\performanceMusic -> "../../../assets/3rdparty/PerformanceMode.mp3",
+			\performingTimeVoice -> "../../../assets/voice/PerformingTime.mp3"
 		];
 	}
 }
@@ -16,6 +17,10 @@
 			{
 				1.wait;
 				World_Audio.play(\performanceMusic, 1, 2, 1, 1, 0, true, \music)
+			}.forkInScene;
+			{
+				3.wait;
+				World_Audio.play(\performingTimeVoice, 6, 0, 1, 1, 0, false, \dialog);
 			}.forkInScene;
 		};
 
@@ -34,6 +39,9 @@
 			}
 		};
 
-		sceneScripts[\leaveScene] = { World_Audio.release(\performanceMusic) };
+		sceneScripts[\leaveScene] = {
+			World_Audio.release(\performanceMusic);
+			World_Audio.release(\performingTimeVoice);
+		};
 	}
 }

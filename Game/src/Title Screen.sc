@@ -7,7 +7,8 @@
 		imagePaths = IdentityDictionary[];
 		// Link to our own assets directory with the music
 		bufferPaths = IdentityDictionary[
-			\initialMusic -> "../../../assets/3rdparty/AwayFromKeyboard.mp3"
+			\initialMusic -> "../../../assets/3rdparty/AwayFromKeyboard.mp3",
+			\greetingVoice -> "../../../assets/voice/Greeting1.mp3"
 		];
 	}
 }
@@ -22,8 +23,12 @@
 		sceneScripts[\startScene] = {
 			{
 				1.wait;
-				World_Audio.play(\initialMusic, 3, 2, 1, 1, 0, true, \music);
-			}.forkInScene
+				World_Audio.play(\initialMusic, 1, 2, 1, 1, 0, true, \music);
+			}.forkInScene;
+			{
+				3.wait;
+				World_Audio.play(\greetingVoice, 2, 0, 1, 1, 0, false, \dialog);
+			}.forkInScene;
 		};
 
 		// Detect 0-9 key inputs for now to test
@@ -34,7 +39,10 @@
 			{49} { World_World.startGame(\buildLearningModeScene) }
 		};
 
-		sceneScripts[\leaveScene] = { World_Audio.release(\initialMusic) };
+		sceneScripts[\leaveScene] = {
+			World_Audio.release(\initialMusic);
+			World_Audio.release(\greetingVoice);
+		};
 		sceneScripts[\revisitScene] = {
 			World_Audio.releaseEverything;
 			scenes[1..].do(_.free);

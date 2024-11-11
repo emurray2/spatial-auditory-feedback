@@ -4,7 +4,8 @@
 	youDidAlright_ASSET_DEF {
 		imagePaths = IdentityDictionary[];
 		bufferPaths = IdentityDictionary[
-			\youDidAlrightMusic -> "../../../assets/3rdparty/YouDidAlright.mp3"
+			\youDidAlrightMusic -> "../../../assets/3rdparty/YouDidAlright.mp3",
+			\notTooBadVoice -> "../../../assets/voice/NotTooBad.mp3"
 		];
 	}
 }
@@ -17,6 +18,10 @@
 				1.wait;
 				World_Audio.play(\youDidAlrightMusic, 1, 2, 1, 1, 0, true, \music)
 			}.forkInScene;
+			{
+				3.wait;
+				World_Audio.play(\notTooBadVoice, 6, 0, 1, 1, 0, false, \dialog);
+			}.forkInScene;
 		};
 
 		sceneScripts[\keyDown] = {|key|
@@ -28,6 +33,9 @@
 			}
 		};
 
-		sceneScripts[\leaveScene] = { World_Audio.release(\youDidAlrightMusic) };
+		sceneScripts[\leaveScene] = {
+			World_Audio.release(\youDidAlrightMusic);
+			World_Audio.release(\notTooBadVoice);
+		};
 	}
 }

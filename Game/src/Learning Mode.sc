@@ -4,7 +4,8 @@
 	learningMode_ASSET_DEF {
 		imagePaths = IdentityDictionary[];
 		bufferPaths = IdentityDictionary[
-			\learningMusic -> "../../../assets/3rdparty/LearningMode.mp3"
+			\learningMusic -> "../../../assets/3rdparty/LearningMode.mp3",
+			\breakItDownVoice -> "../../../assets/voice/BreakItDown.mp3"
 		];
 	}
 }
@@ -15,7 +16,11 @@
 		sceneScripts[\startScene] = {
 			{
 				1.wait;
-				World_Audio.play(\learningMusic, 1, 2, 1, 1, 0, true, \music)
+				World_Audio.play(\learningMusic, 0.5, 2, 1, 1, 0, true, \music)
+			}.forkInScene;
+			{
+				3.wait;
+				World_Audio.play(\breakItDownVoice, 3, 0, 1, 1, 0, false, \dialog);
 			}.forkInScene;
 		};
 
@@ -30,6 +35,9 @@
 			}
 		};
 
-		sceneScripts[\leaveScene] = { World_Audio.release(\learningMusic) };
+		sceneScripts[\leaveScene] = {
+			World_Audio.release(\learningMusic);
+			World_Audio.release(\breakItDownVoice);
+		};
 	}
 }

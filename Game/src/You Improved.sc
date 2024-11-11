@@ -4,7 +4,8 @@
 	youImproved_ASSET_DEF {
 		imagePaths = IdentityDictionary[];
 		bufferPaths = IdentityDictionary[
-			\youImprovedMusic -> "../../../assets/3rdparty/YouImproved.mp3"
+			\youImprovedMusic -> "../../../assets/3rdparty/YouImproved.mp3",
+			\seriousImprovementVoice -> "../../../assets/voice/SeriousImprovement.mp3"
 		];
 	}
 }
@@ -17,6 +18,10 @@
 				1.wait;
 				World_Audio.play(\youImprovedMusic, 1, 2, 1, 1, 0, true, \music)
 			}.forkInScene;
+			{
+				3.wait;
+				World_Audio.play(\seriousImprovementVoice, 6, 0, 1, 1, 0, false, \dialog);
+			}.forkInScene;
 		};
 
 		sceneScripts[\keyDown] = {|key|
@@ -28,6 +33,9 @@
 			}
 		};
 
-		sceneScripts[\leaveScene] = { World_Audio.release(\youImprovedMusic) };
+		sceneScripts[\leaveScene] = {
+			World_Audio.release(\youImprovedMusic);
+			World_Audio.release(\seriousImprovementVoice);
+		};
 	}
 }

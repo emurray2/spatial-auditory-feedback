@@ -4,7 +4,8 @@
 	practiceMode_ASSET_DEF {
 		imagePaths = IdentityDictionary[];
 		bufferPaths = IdentityDictionary[
-			\practiceMusic -> "../../../assets/3rdparty/PracticeMode.mp3"
+			\practiceMusic -> "../../../assets/3rdparty/PracticeMode.mp3",
+			\practiceTimeVoice -> "../../../assets/voice/PracticeTime.mp3"
 		];
 	}
 }
@@ -16,6 +17,10 @@
 			{
 				1.wait;
 				World_Audio.play(\practiceMusic, 1, 2, 1, 1, 0, true, \music)
+			}.forkInScene;
+			{
+				3.wait;
+				World_Audio.play(\practiceTimeVoice, 6, 0, 1, 1, 0, false, \dialog);
 			}.forkInScene;
 		};
 
@@ -36,6 +41,9 @@
 			}
 		};
 
-		sceneScripts[\leaveScene] = { World_Audio.release(\practiceMusic) };
+		sceneScripts[\leaveScene] = {
+			World_Audio.release(\practiceMusic);
+			World_Audio.release(\practiceTimeVoice);
+		};
 	}
 }

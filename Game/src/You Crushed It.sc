@@ -4,7 +4,8 @@
 	youCrushedIt_ASSET_DEF {
 		imagePaths = IdentityDictionary[];
 		bufferPaths = IdentityDictionary[
-			\youCrushedItMusic -> "../../../assets/3rdparty/YouCrushedIt.mp3"
+			\youCrushedItMusic -> "../../../assets/3rdparty/YouCrushedIt.mp3",
+			\youCrushedItVoice -> "../../../assets/voice/YouCrushedIt.mp3"
 		];
 	}
 }
@@ -17,6 +18,10 @@
 				1.wait;
 				World_Audio.play(\youCrushedItMusic, 1, 2, 1, 1, 0, true, \music)
 			}.forkInScene;
+			{
+				3.wait;
+				World_Audio.play(\youCrushedItVoice, 6, 0, 1, 1, 0, false, \dialog);
+			}.forkInScene;
 		};
 
 		sceneScripts[\keyDown] = {|key|
@@ -28,6 +33,9 @@
 			}
 		};
 
-		sceneScripts[\leaveScene] = { World_Audio.release(\youCrushedItMusic) };
+		sceneScripts[\leaveScene] = {
+			World_Audio.release(\youCrushedItMusic);
+			World_Audio.release(\youCrushedItVoice);
+		};
 	}
 }
