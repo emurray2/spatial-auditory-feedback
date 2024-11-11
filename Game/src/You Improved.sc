@@ -1,4 +1,4 @@
-// You Did Alright scene
+// You Improved scene
 
 + World_Assets {
 	youImproved_ASSET_DEF {
