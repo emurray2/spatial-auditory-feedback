@@ -23,6 +23,8 @@
 			switch(key.key)
 			// 2
 			{50} { World_Scene.createScene(\buildYouDidAlrightScene) }
+			// 3
+			{51} { World_Scene.createScene(\buildYouImprovedScene) }
 			// Return
 			{16777220} {
 				World_Audio.stopEverything;
