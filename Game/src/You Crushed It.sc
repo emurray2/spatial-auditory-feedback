@@ -16,11 +16,11 @@
 		sceneScripts[\startScene] = {
 			{
 				1.wait;
-				World_Audio.play(\youCrushedItMusic, 1, 2, 1, 1, 0, true, \music)
+				World_Audio.play(\youCrushedItMusic, 0.1, 2, 1, 1, 0, true, \music)
 			}.forkInScene;
 			{
 				3.wait;
-				World_Audio.play(\youCrushedItVoice, 6, 0, 1, 1, 0, false, \dialog);
+				World_Audio.play(\youCrushedItVoice, 1, 0, 1, 1, 0, false, \dialog);
 			}.forkInScene;
 		};
 

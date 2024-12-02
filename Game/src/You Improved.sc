@@ -16,11 +16,11 @@
 		sceneScripts[\startScene] = {
 			{
 				1.wait;
-				World_Audio.play(\youImprovedMusic, 1, 2, 1, 1, 0, true, \music)
+				World_Audio.play(\youImprovedMusic, 0.1, 2, 1, 1, 0, true, \music)
 			}.forkInScene;
 			{
 				3.wait;
-				World_Audio.play(\seriousImprovementVoice, 6, 0, 1, 1, 0, false, \dialog);
+				World_Audio.play(\seriousImprovementVoice, 1, 0, 1, 1, 0, false, \dialog);
 			}.forkInScene;
 		};
 

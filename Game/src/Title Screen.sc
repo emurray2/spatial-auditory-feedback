@@ -23,11 +23,11 @@
 		sceneScripts[\startScene] = {
 			{
 				1.wait;
-				World_Audio.play(\initialMusic, 1, 2, 1, 1, 0, true, \music);
+				World_Audio.play(\initialMusic, 0.3, 2, 1, 1, 0, true, \music);
 			}.forkInScene;
 			{
 				3.wait;
-				World_Audio.play(\greetingVoice, 2, 0, 1, 1, 0, false, \dialog);
+				World_Audio.play(\greetingVoice, 1, 0, 1, 1, 0, false, \dialog);
 			}.forkInScene;
 		};
 
@@ -47,7 +47,7 @@
 			World_Audio.releaseEverything;
 			scenes[1..].do(_.free);
 			scenes = scenes[..0];   // remove old scenes
-			World_Audio.play(\initialMusic, 3, 2, 1, 1, 0, true, \music);
+			World_Audio.play(\initialMusic, 0.3, 2, 1, 1, 0, true, \music);
 		};
 	}
 }
