@@ -34,6 +34,8 @@
 			{51} { World_Scene.createScene(\buildYouImprovedScene) }
 			// 4
 			{52} { World_Scene.createScene(\buildYouCrushedItScene) }
+			// 5
+			{53} { World_Scene.createScene(\buildDance1Scene) }
 			// Return
 			{16777220} {
 				World_Audio.stopEverything;

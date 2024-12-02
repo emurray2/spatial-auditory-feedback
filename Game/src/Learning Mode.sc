@@ -28,6 +28,8 @@
 			switch(key.key)
 			// 1
 			{49} { World_Scene.createScene(\buildPracticeModeScene) }
+			// 5
+			{53} { World_Scene.createScene(\buildDance1Scene) }
 			// Return
 			{16777220} {
 				World_Audio.stopEverything;

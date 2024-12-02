@@ -22,6 +22,15 @@
 		// Scene initialization
 		sceneScripts[\startScene] = {
 			{
+				// Setup
+				AtkHoa.setDefaultOrder(5); // 36 channels
+
+				// Encoder Decoder stuff
+				~freq = 30.0; // highpass freq for preconditioning proximity
+				~foaEncode = FoaEncoderMatrix.newHoa1;
+				~foaDecode = FoaDecoderKernel.newCIPIC;
+			}.forkInScene;
+			{
 				1.wait;
 				World_Audio.play(\initialMusic, 0.3, 2, 1, 1, 0, true, \music);
 			}.forkInScene;
